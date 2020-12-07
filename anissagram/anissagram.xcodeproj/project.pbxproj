@@ -1,0 +1,439 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8C024712256E3F8800F859F6 /* anissagramApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C024711256E3F8800F859F6 /* anissagramApp.swift */; };
+		8C024714256E3F8800F859F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C024713256E3F8800F859F6 /* ContentView.swift */; };
+		8C024716256E3F8A00F859F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C024715256E3F8A00F859F6 /* Assets.xcassets */; };
+		8C024719256E3F8A00F859F6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C024718256E3F8A00F859F6 /* Preview Assets.xcassets */; };
+		8C024722256E3FB400F859F6 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C024721256E3FB400F859F6 /* ProfileView.swift */; };
+		8C02472A256E3FEF00F859F6 /* LoveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C024729256E3FEF00F859F6 /* LoveView.swift */; };
+		8C02472E256E473E00F859F6 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02472D256E473E00F859F6 /* InfoView.swift */; };
+		8C024733257066D600F859F6 /* FoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C024732257066D600F859F6 /* FoodView.swift */; };
+		8C3FF52E2570B5B200288B7E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FF52D2570B5B200288B7E /* User.swift */; };
+		8C532BD7257DF51B00F39A4E /* DbTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C532BD6257DF51B00F39A4E /* DbTestView.swift */; };
+		8CE7A3E8257D9C7800147C48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CE7A3E7257D9C7800147C48 /* GoogleService-Info.plist */; };
+		8CE7A3FA257D9DF300147C48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE7A3F9257D9DF300147C48 /* AppDelegate.swift */; };
+		A096523B0F55A3775EE0FC92 /* Pods_anissagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA19BDA783E84D653D1F7DCD /* Pods_anissagram.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		220BB5ABF34D979D00D24E5D /* Pods-anissagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-anissagram.debug.xcconfig"; path = "Target Support Files/Pods-anissagram/Pods-anissagram.debug.xcconfig"; sourceTree = "<group>"; };
+		5A1E86C62A7C02694B0C1DFA /* Pods-anissagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-anissagram.release.xcconfig"; path = "Target Support Files/Pods-anissagram/Pods-anissagram.release.xcconfig"; sourceTree = "<group>"; };
+		8C02470E256E3F8800F859F6 /* anissagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = anissagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C024711256E3F8800F859F6 /* anissagramApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = anissagramApp.swift; sourceTree = "<group>"; };
+		8C024713256E3F8800F859F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8C024715256E3F8A00F859F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8C024718256E3F8A00F859F6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8C02471A256E3F8A00F859F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C024721256E3FB400F859F6 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		8C024729256E3FEF00F859F6 /* LoveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveView.swift; sourceTree = "<group>"; };
+		8C02472D256E473E00F859F6 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		8C024732257066D600F859F6 /* FoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodView.swift; sourceTree = "<group>"; };
+		8C3FF52D2570B5B200288B7E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8C532BD6257DF51B00F39A4E /* DbTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTestView.swift; sourceTree = "<group>"; };
+		8CE7A3E7257D9C7800147C48 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8CE7A3F9257D9DF300147C48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8CE7A3FC257DA22C00147C48 /* anissagram.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = anissagram.entitlements; sourceTree = "<group>"; };
+		FA19BDA783E84D653D1F7DCD /* Pods_anissagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_anissagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8C02470B256E3F8800F859F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A096523B0F55A3775EE0FC92 /* Pods_anissagram.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19F65E4C0B59DBDE5ED2E984 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				220BB5ABF34D979D00D24E5D /* Pods-anissagram.debug.xcconfig */,
+				5A1E86C62A7C02694B0C1DFA /* Pods-anissagram.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8C024705256E3F8800F859F6 = {
+			isa = PBXGroup;
+			children = (
+				8C024710256E3F8800F859F6 /* anissagram */,
+				8C02470F256E3F8800F859F6 /* Products */,
+				19F65E4C0B59DBDE5ED2E984 /* Pods */,
+				CF37716D6C3F39A76586ACAA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8C02470F256E3F8800F859F6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8C02470E256E3F8800F859F6 /* anissagram.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8C024710256E3F8800F859F6 /* anissagram */ = {
+			isa = PBXGroup;
+			children = (
+				8CE7A3FC257DA22C00147C48 /* anissagram.entitlements */,
+				8C02472D256E473E00F859F6 /* InfoView.swift */,
+				8C024711256E3F8800F859F6 /* anissagramApp.swift */,
+				8C024729256E3FEF00F859F6 /* LoveView.swift */,
+				8C024721256E3FB400F859F6 /* ProfileView.swift */,
+				8C024732257066D600F859F6 /* FoodView.swift */,
+				8C024713256E3F8800F859F6 /* ContentView.swift */,
+				8C532BD6257DF51B00F39A4E /* DbTestView.swift */,
+				8C3FF52D2570B5B200288B7E /* User.swift */,
+				8CE7A3F9257D9DF300147C48 /* AppDelegate.swift */,
+				8C024715256E3F8A00F859F6 /* Assets.xcassets */,
+				8C02471A256E3F8A00F859F6 /* Info.plist */,
+				8CE7A3E7257D9C7800147C48 /* GoogleService-Info.plist */,
+				8C024717256E3F8A00F859F6 /* Preview Content */,
+			);
+			path = anissagram;
+			sourceTree = "<group>";
+		};
+		8C024717256E3F8A00F859F6 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8C024718256E3F8A00F859F6 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		CF37716D6C3F39A76586ACAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA19BDA783E84D653D1F7DCD /* Pods_anissagram.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8C02470D256E3F8800F859F6 /* anissagram */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C02471D256E3F8A00F859F6 /* Build configuration list for PBXNativeTarget "anissagram" */;
+			buildPhases = (
+				4EE06249F508286FCE8A7F75 /* [CP] Check Pods Manifest.lock */,
+				8C02470A256E3F8800F859F6 /* Sources */,
+				8C02470B256E3F8800F859F6 /* Frameworks */,
+				8C02470C256E3F8800F859F6 /* Resources */,
+				E3A5B9B1ED90DFD54FB4919C /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = anissagram;
+			productName = anissagram;
+			productReference = 8C02470E256E3F8800F859F6 /* anissagram.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8C024706256E3F8800F859F6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					8C02470D256E3F8800F859F6 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+				};
+			};
+			buildConfigurationList = 8C024709256E3F8800F859F6 /* Build configuration list for PBXProject "anissagram" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8C024705256E3F8800F859F6;
+			productRefGroup = 8C02470F256E3F8800F859F6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8C02470D256E3F8800F859F6 /* anissagram */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8C02470C256E3F8800F859F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C024719256E3F8A00F859F6 /* Preview Assets.xcassets in Resources */,
+				8C024716256E3F8A00F859F6 /* Assets.xcassets in Resources */,
+				8CE7A3E8257D9C7800147C48 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4EE06249F508286FCE8A7F75 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-anissagram-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E3A5B9B1ED90DFD54FB4919C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-anissagram/Pods-anissagram-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-anissagram/Pods-anissagram-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-anissagram/Pods-anissagram-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8C02470A256E3F8800F859F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CE7A3FA257D9DF300147C48 /* AppDelegate.swift in Sources */,
+				8C532BD7257DF51B00F39A4E /* DbTestView.swift in Sources */,
+				8C024714256E3F8800F859F6 /* ContentView.swift in Sources */,
+				8C024733257066D600F859F6 /* FoodView.swift in Sources */,
+				8C024722256E3FB400F859F6 /* ProfileView.swift in Sources */,
+				8C024712256E3F8800F859F6 /* anissagramApp.swift in Sources */,
+				8C02472E256E473E00F859F6 /* InfoView.swift in Sources */,
+				8C02472A256E3FEF00F859F6 /* LoveView.swift in Sources */,
+				8C3FF52E2570B5B200288B7E /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8C02471B256E3F8A00F859F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8C02471C256E3F8A00F859F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8C02471E256E3F8A00F859F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 220BB5ABF34D979D00D24E5D /* Pods-anissagram.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = anissagram/anissagram.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"anissagram/Preview Content\"";
+				DEVELOPMENT_TEAM = MBL48388YF;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = anissagram/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = reese.anissagram;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8C02471F256E3F8A00F859F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A1E86C62A7C02694B0C1DFA /* Pods-anissagram.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = anissagram/anissagram.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"anissagram/Preview Content\"";
+				DEVELOPMENT_TEAM = MBL48388YF;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = anissagram/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = reese.anissagram;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8C024709256E3F8800F859F6 /* Build configuration list for PBXProject "anissagram" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C02471B256E3F8A00F859F6 /* Debug */,
+				8C02471C256E3F8A00F859F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8C02471D256E3F8A00F859F6 /* Build configuration list for PBXNativeTarget "anissagram" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C02471E256E3F8A00F859F6 /* Debug */,
+				8C02471F256E3F8A00F859F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8C024706256E3F8800F859F6 /* Project object */;
+}

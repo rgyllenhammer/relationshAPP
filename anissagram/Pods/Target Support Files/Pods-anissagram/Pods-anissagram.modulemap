@@ -1,0 +1,6 @@
+framework module Pods_anissagram {
+  umbrella header "Pods-anissagram-umbrella.h"
+
+  export *
+  module * { export * }
+}
