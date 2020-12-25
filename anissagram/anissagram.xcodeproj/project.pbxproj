@@ -16,7 +16,9 @@
 		8C02472E256E473E00F859F6 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C02472D256E473E00F859F6 /* InfoView.swift */; };
 		8C024733257066D600F859F6 /* FoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C024732257066D600F859F6 /* FoodView.swift */; };
 		8C3FF52E2570B5B200288B7E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FF52D2570B5B200288B7E /* User.swift */; };
-		8C532BD7257DF51B00F39A4E /* DbTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C532BD6257DF51B00F39A4E /* DbTestView.swift */; };
+		8CC5143C259334AB00187754 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC5143B259334AB00187754 /* SessionStore.swift */; };
+		8CC5143F2593387D00187754 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC5143E2593387D00187754 /* LoginView.swift */; };
+		8CC51442259473F200187754 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51441259473F200187754 /* DatabaseManager.swift */; };
 		8CE7A3E8257D9C7800147C48 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CE7A3E7257D9C7800147C48 /* GoogleService-Info.plist */; };
 		8CE7A3FA257D9DF300147C48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE7A3F9257D9DF300147C48 /* AppDelegate.swift */; };
 		A096523B0F55A3775EE0FC92 /* Pods_anissagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA19BDA783E84D653D1F7DCD /* Pods_anissagram.framework */; };
@@ -36,7 +38,9 @@
 		8C02472D256E473E00F859F6 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		8C024732257066D600F859F6 /* FoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodView.swift; sourceTree = "<group>"; };
 		8C3FF52D2570B5B200288B7E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		8C532BD6257DF51B00F39A4E /* DbTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTestView.swift; sourceTree = "<group>"; };
+		8CC5143B259334AB00187754 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
+		8CC5143E2593387D00187754 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		8CC51441259473F200187754 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		8CE7A3E7257D9C7800147C48 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8CE7A3F9257D9DF300147C48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CE7A3FC257DA22C00147C48 /* anissagram.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = anissagram.entitlements; sourceTree = "<group>"; };
@@ -85,19 +89,17 @@
 		8C024710256E3F8800F859F6 /* anissagram */ = {
 			isa = PBXGroup;
 			children = (
-				8CE7A3FC257DA22C00147C48 /* anissagram.entitlements */,
-				8C02472D256E473E00F859F6 /* InfoView.swift */,
+				8CC5144525948A6400187754 /* Models */,
+				8CC5142825932DA900187754 /* Views */,
 				8C024711256E3F8800F859F6 /* anissagramApp.swift */,
-				8C024729256E3FEF00F859F6 /* LoveView.swift */,
-				8C024721256E3FB400F859F6 /* ProfileView.swift */,
-				8C024732257066D600F859F6 /* FoodView.swift */,
-				8C024713256E3F8800F859F6 /* ContentView.swift */,
-				8C532BD6257DF51B00F39A4E /* DbTestView.swift */,
 				8C3FF52D2570B5B200288B7E /* User.swift */,
+				8CC51441259473F200187754 /* DatabaseManager.swift */,
 				8CE7A3F9257D9DF300147C48 /* AppDelegate.swift */,
+				8CC5143B259334AB00187754 /* SessionStore.swift */,
 				8C024715256E3F8A00F859F6 /* Assets.xcassets */,
 				8C02471A256E3F8A00F859F6 /* Info.plist */,
 				8CE7A3E7257D9C7800147C48 /* GoogleService-Info.plist */,
+				8CE7A3FC257DA22C00147C48 /* anissagram.entitlements */,
 				8C024717256E3F8A00F859F6 /* Preview Content */,
 			);
 			path = anissagram;
@@ -109,6 +111,26 @@
 				8C024718256E3F8A00F859F6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8CC5142825932DA900187754 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8C024713256E3F8800F859F6 /* ContentView.swift */,
+				8C024732257066D600F859F6 /* FoodView.swift */,
+				8C024721256E3FB400F859F6 /* ProfileView.swift */,
+				8C024729256E3FEF00F859F6 /* LoveView.swift */,
+				8C02472D256E473E00F859F6 /* InfoView.swift */,
+				8CC5143E2593387D00187754 /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8CC5144525948A6400187754 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		CF37716D6C3F39A76586ACAA /* Frameworks */ = {
@@ -234,13 +256,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CE7A3FA257D9DF300147C48 /* AppDelegate.swift in Sources */,
-				8C532BD7257DF51B00F39A4E /* DbTestView.swift in Sources */,
+				8CC51442259473F200187754 /* DatabaseManager.swift in Sources */,
 				8C024714256E3F8800F859F6 /* ContentView.swift in Sources */,
 				8C024733257066D600F859F6 /* FoodView.swift in Sources */,
 				8C024722256E3FB400F859F6 /* ProfileView.swift in Sources */,
 				8C024712256E3F8800F859F6 /* anissagramApp.swift in Sources */,
+				8CC5143C259334AB00187754 /* SessionStore.swift in Sources */,
 				8C02472E256E473E00F859F6 /* InfoView.swift in Sources */,
 				8C02472A256E3FEF00F859F6 /* LoveView.swift in Sources */,
+				8CC5143F2593387D00187754 /* LoginView.swift in Sources */,
 				8C3FF52E2570B5B200288B7E /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

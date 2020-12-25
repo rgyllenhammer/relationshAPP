@@ -7,12 +7,20 @@
 
 import Foundation
 
-class User : ObservableObject {
-    var sendTo: String?
-    var sendFrom: String?
+class User {
+    var uid: String
+    var email: String?
+    var displayName: String?
+    var userName: String?
+    var firstName: String?
+    var lastName: String?
     
-    init(sendTo: String, sendFrom: String?) {
-        self.sendTo = sendTo
-        self.sendFrom = sendFrom
+    init(uid: String, email: String?, displayName: String?, userName: String?, firstName: String?, lastName: String?) {
+        self.uid = uid
+        self.email = email
+        self.displayName = displayName
+        self.userName = userName
+        self.firstName = firstName
+        self.lastName = lastName
     }
 }

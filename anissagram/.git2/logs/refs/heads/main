@@ -1,0 +1,14 @@
+0000000000000000000000000000000000000000 a4f384f8946130c934654deefbb2f4020a8c4518 Reese Gyllenhammer <reesegyllenhammer@Reeses-MacBook-Pro-2.local> 1606340505 -0800	commit (initial): first commit for her birthday
+a4f384f8946130c934654deefbb2f4020a8c4518 a4f384f8946130c934654deefbb2f4020a8c4518 Reese Gyllenhammer <reesegyllenhammer@Reeses-MacBook-Pro-2.local> 1606340515 -0800	Branch: renamed refs/heads/master to refs/heads/main
+a4f384f8946130c934654deefbb2f4020a8c4518 7b148e78f0cc3cd24362190ff90e4575d103b908 Reese Gyllenhammer <reesegyllenhammer@Reeses-MacBook-Pro-2.local> 1606341227 -0800	commit: switched around tab views and fixed styling
+7b148e78f0cc3cd24362190ff90e4575d103b908 879943611c896aaa302fcbf48adeafeddd75bd03 Reese Gyllenhammer <reesegyllenhammer@Reeses-MacBook-Pro-2.local> 1606341265 -0800	commit (amend): switched around tab views and fixed styling
+879943611c896aaa302fcbf48adeafeddd75bd03 b4b6f39a4d1f27c5d0e90a0eacdfca8a47aacfd2 Reese Gyllenhammer <reesegyllenhammer@Reeses-MacBook-Pro-2.local> 1606435476 -0800	commit: added food page and fixed style
+b4b6f39a4d1f27c5d0e90a0eacdfca8a47aacfd2 71fffd8e34f09314a99cf900e08b27116119a981 Reese Gyllenhammer <reesegyllenhammer@Reeses-MacBook-Pro-2.local> 1606444681 -0800	commit: updated food style
+71fffd8e34f09314a99cf900e08b27116119a981 61403d363e394345ef33438e144ef65bb6330262 Reese Gyllenhammer <reesegyllenhammer@Reeses-MacBook-Pro-2.local> 1606453708 -0800	commit: added stylistic changes
+61403d363e394345ef33438e144ef65bb6330262 a2fe7aeb3f2d41d9eb06a7794f29ac25fe33ac00 Reese Gyllenhammer <reesegyllenhammer@Reeses-MacBook-Pro-2.local> 1606454553 -0800	commit: added logos
+a2fe7aeb3f2d41d9eb06a7794f29ac25fe33ac00 e90b6069d9880a04729788924fa5d0276b5c8722 Reese Gyllenhammer <reesegyllenhammer@Reeses-MacBook-Pro-2.local> 1606455091 -0800	commit: fixed styling on buttons
+e90b6069d9880a04729788924fa5d0276b5c8722 9895788b32d242bda32b665bc04e0c8ba7372498 Reese Gyllenhammer <reesegyllenhammer@Reeses-MacBook-Pro-2.local> 1606459435 -0800	commit: committing because xcode is being weird
+9895788b32d242bda32b665bc04e0c8ba7372498 672c37612abc89f0bb46646b2f27d432b5e1cc88 Reese Gyllenhammer <reesegyllenhammer@Reeses-MacBook-Pro-2.local> 1606461323 -0800	commit: finished profile page
+672c37612abc89f0bb46646b2f27d432b5e1cc88 98d18aff6792c8f551304c9dc140dbff5afb181b Reese Gyllenhammer <reesegyllenhammer@Reeses-MacBook-Pro-2.local> 1606462324 -0800	commit: fixed everything but minor bug update
+98d18aff6792c8f551304c9dc140dbff5afb181b 94cfe6bfc7cfdaebf3f571b9ae65acbb4d5a86f3 Reese Gyllenhammer <reesegyllenhammer@Reeses-MacBook-Pro-2.local> 1606463317 -0800	commit: updated so you cna tap to dismiss restaurants
+94cfe6bfc7cfdaebf3f571b9ae65acbb4d5a86f3 c0d9f3b6c3e4b3c052215ca1c5427808cf26a281 Reese Gyllenhammer <reesegyllenhammer@Reeses-MacBook-Pro-2.local> 1606463381 -0800	commit (amend): updated so you cna tap to dismiss restaurants

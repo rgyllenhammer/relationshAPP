@@ -1,0 +1,16 @@
+updated so you cna tap to dismiss restaurants
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Thu Nov 26 23:48:37 2020 -0800
+# Committer: Reese Gyllenhammer <reesegyllenhammer@Reeses-MacBook-Pro-2.local>
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	modified:   anissagram.xcodeproj/project.xcworkspace/xcuserdata/reesegyllenhammer.xcuserdatad/UserInterfaceState.xcuserstate
+#	modified:   anissagram/FoodView.swift
+#	modified:   anissagram/InfoView.swift
+#
