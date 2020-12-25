@@ -42,10 +42,7 @@ class SessionStore: ObservableObject {
                 // insert user to firebase
                 DatabaseManager.shared.insertUser(user: self.session!)
             }
-            
-            
         })
-
     }
 
     // TODO: Sign in an existing user with Firebase AUthentication
