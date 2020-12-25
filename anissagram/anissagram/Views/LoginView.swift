@@ -12,6 +12,10 @@ struct LoginView: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var userName: String = ""
+    @State private var firstName: String = ""
+    @State private var lastName: String = ""
+
     
     @State private var loggedIn: Bool = false
     @EnvironmentObject var session: SessionStore
@@ -49,6 +53,9 @@ struct LoginView: View {
                         destination:
                             VStack{
                                 FormView(signingIn: false, email: $email, password: $password)
+                                TextField("Username", text: $userName)
+                                TextField("First Name", text: $firstName)
+                                TextField("Last Name", text: $lastName)
                                 
                                 Button(action: {signUp()}, label: {
                                     Text("Submit")
@@ -75,7 +82,7 @@ struct LoginView: View {
     // TODO: Sign up a new user to Firebase Authentication
     func signUp() {
         print("user sign up")
-        session.signUp(email: email, password: password)
+        session.signUp(email: email, password: password, userName: userName, firstName: firstName, lastName: lastName)
     }
     
     // TODO: Implement more rigorous checks
@@ -101,7 +108,7 @@ struct FormView : View {
         VStack{
             Text(signingIn ? "LOG IN" : "SIGN UP")
 
-            TextField("Username", text: $email)
+            TextField("Email", text: $email)
             TextField("Password", text: $password)
         }.foregroundColor(signingIn ? Color.red : Color.blue)
 
@@ -117,8 +124,6 @@ struct ButtonView : View {
         ZStack{
             Text(signingIn ? "Sign In" : "Sign Up")
         }.foregroundColor(.white).frame(width: 200, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).background(signingIn ? Color.red : Color.blue).cornerRadius(20)
-        
-
         
     }
     

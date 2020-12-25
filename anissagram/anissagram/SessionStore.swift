@@ -18,15 +18,10 @@ class SessionStore: ObservableObject {
     var handle: AuthStateDidChangeListenerHandle?
 
     // TODO: Sign up a new user with Firebase Authentication
-    func signUp(email: String, password: String) {
+    func signUp(email: String, password: String, userName: String, firstName: String, lastName: String) {
         print("sign up new user")
         Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, err in
-            
-            // pass this data in from form
-            let userName = "ranchgod"
-            let firstName = "reese"
-            let lastName = "gyllenhammer"
-            
+                
             if err != nil {
                 print("reese we are in the doghouse now")
             } else {
