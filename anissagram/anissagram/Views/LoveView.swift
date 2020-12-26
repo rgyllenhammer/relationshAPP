@@ -42,7 +42,7 @@ struct LoveView: View {
                             Image(systemName: "chevron.right")
                         }
                         .font(.title)
-                        .foregroundColor(.red)
+                        .foregroundColor(.aRed)
                     }).alert(isPresented: $showingAlert) {
 //                        Alert(title: Text("Request Sent!"), message: Text("Succesfully sent \(userToText.sendTo!) an attention request!"), dismissButton: .default(Text("Got it!")))
                         Alert(title: Text("Request Sent!"), message: Text("Succesfully sent \("reese") an attention request!"), dismissButton: .default(Text("Got it!")))
