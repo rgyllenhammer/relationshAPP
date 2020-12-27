@@ -33,47 +33,48 @@ struct LoginView: View {
                     HStack {
                         Text("Don't have an account?")
                         NavigationLink(
-                            destination: VStack{
-                                VStack {
-                                    HStack {
-                                        Text("Register")
-                                            .font(.largeTitle)
-                                            .fontWeight(.bold)
-                                        Spacer()
-                                    }
-                                    Image("anissagram")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .cornerRadius(20)
-                                        .padding(.bottom)
-                                    VStack{
-                                        HStack{
-                                            InputView(placeholder: "First Name", color: Color.aYellow, bindingText: $firstName)
-                                            InputView(placeholder: "Last Name", color: Color.aYellow, bindingText: $lastName)
+                            destination:
+                                VStack{
+                                    VStack {
+                                        HStack {
+                                            Text("Register")
+                                                .font(.largeTitle)
+                                                .fontWeight(.bold)
+                                            Spacer()
+                                        }
+                                        Image("anissagram")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .cornerRadius(20)
+                                            .padding(.bottom)
+                                        VStack{
+                                            HStack{
+                                                InputView(placeholder: "First Name", color: Color.aYellow, bindingText: $firstName)
+                                                InputView(placeholder: "Last Name", color: Color.aYellow, bindingText: $lastName)
+                                            }.padding(.top)
+                                            InputView(placeholder: "Email", color: Color.aYellow, bindingText: $email)
+                                            InputView(placeholder: "Username", color: Color.aYellow, bindingText: $userName)
+                                            InputView(placeholder: "Password", color: Color.aYellow, bindingText: $password)
+                                            Button(action: {
+                                                signUp()
+                                            }, label: {
+                                                Text("Sign up")
+                                                    .font(.title)
+                                                    .padding()
+                                                    .foregroundColor(.aYellow)
+                                            })
                                         }.padding(.top)
-                                        InputView(placeholder: "Email", color: Color.aYellow, bindingText: $email)
-                                        InputView(placeholder: "Username", color: Color.aYellow, bindingText: $userName)
-                                        InputView(placeholder: "Password", color: Color.aYellow, bindingText: $password)
-                                        Button(action: {
-                                            signUp()
-                                        }, label: {
-                                            Text("Sign up")
-                                                .font(.title)
-                                                .padding()
-                                                .foregroundColor(.aYellow)
-                                        })
-                                    }.padding(.top)
-    
-                                    
-                                }.padding()
-                            },
-                            
+
+
+                                    }.padding()
+                                },
+
                             label: {
                                 HStack{
                                     Text("Register")
                                     Image(systemName: "chevron.right")
                                 }
-                                
+
                                 .foregroundColor(.aYellow)
                             })
                     }.padding(.vertical)
@@ -91,9 +92,11 @@ struct LoginView: View {
                     })
 
                 }
-                .padding()
                 .navigationTitle("Log in")
-            }.accentColor(.red)
+                .padding()
+
+            }
+            .accentColor(.red)
             
         
         // TODO: create view that accepts email/password and allows users to login or signup
@@ -124,24 +127,6 @@ struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
     }
-}
-
-struct FormView : View {
-    var signingIn : Bool
-    @Binding var email: String
-    @Binding var password: String
-    
-    var body: some View {
-        
-        VStack{
-            Text(signingIn ? "LOG IN" : "SIGN UP")
-
-            TextField("Email", text: $email)
-            TextField("Password", text: $password)
-        }.foregroundColor(signingIn ? Color.red : Color.blue)
-
-    }
-    
 }
 
 struct InputView : View {

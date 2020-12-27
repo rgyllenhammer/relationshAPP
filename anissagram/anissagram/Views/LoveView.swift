@@ -10,8 +10,8 @@ import Firebase
 
 struct LoveView: View {
     
+    @EnvironmentObject var session: SessionStore
     @State var showingAlert = false
-    
     @State var numLove = 0
     @State var fullSize = true
     
@@ -25,7 +25,7 @@ struct LoveView: View {
                     }
                     HStack{
                         Text("From")
-                        Text("@anissa").foregroundColor(.aYellow)
+                        Text("@\((session.session?.lastConversation) ?? "nil" )").foregroundColor(.aYellow)
                         Spacer()
                     }.font(.title3)
                 }
@@ -38,7 +38,7 @@ struct LoveView: View {
                     Spacer()
                     Button(action: {
                         // Firebase communication
-                        DatabaseManager.shared.sendNotification(sendTo: "reese", sendFrom: "anissa", numLove: numLove)
+                        DatabaseManager.shared.sendNotification(sendTo: "\(session)", sendFrom: "anissa", numLove: numLove)
 
                         // Haptic Feedback
                         let impactMed = UIImpactFeedbackGenerator(style: .medium)
@@ -56,8 +56,8 @@ struct LoveView: View {
                         .font(.title)
                         .foregroundColor(.aRed)
                     }).alert(isPresented: $showingAlert) {
-//                        Alert(title: Text("Request Sent!"), message: Text("Succesfully sent \(userToText.sendTo!) an attention request!"), dismissButton: .default(Text("Got it!")))
-                        Alert(title: Text("Request Sent!"), message: Text("Succesfully sent \("reese") an attention request!"), dismissButton: .default(Text("Got it!")))
+                        
+                        Alert(title: Text("Request Sent!"), message: Text("Succesfully sent \((session.session?.lastConversation) ?? "nil") an attention request!"), dismissButton: .default(Text("Got it!")))
                     }
                 }
 

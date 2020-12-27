@@ -23,7 +23,7 @@ class SessionStore: ObservableObject {
         Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, err in
                 
             if err != nil {
-                print("reese we are in the doghouse now")
+                print("Error signing up. Email already in use")
             } else {
                 self.session = User(
                     uid: authResult!.user.uid,
@@ -63,7 +63,7 @@ class SessionStore: ObservableObject {
                 
                 // grab this data from firebase
                 if err != nil {
-                    print("reese we are in the doghouse now")
+                    print("Unable to login, check username and password")
                 } else {
                     self.session = User(
                         uid: authResult!.user.uid,
@@ -92,13 +92,6 @@ class SessionStore: ObservableObject {
             print("signout successfull")
         } catch {
             print("Error during signout")
-        }
-    }
-    
-    /// Stop listening to our authentication change handler
-    func unbind () {
-        if let handle = handle {
-            Auth.auth().removeStateDidChangeListener(handle)
         }
     }
     

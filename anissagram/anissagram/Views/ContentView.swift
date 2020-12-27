@@ -29,7 +29,7 @@ struct ContentView: View {
                         }
                     // pass in user to text because this is where the texting happens
 //                    LoveView().environmentObject(userToText)
-                    LoveView()
+                    LoveView().environmentObject(session)
                         .tabItem {
                             Image(systemName: "suit.heart.fill")
                             Text("Notify")
