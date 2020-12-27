@@ -37,12 +37,12 @@ struct LoginView: View {
                         .aspectRatio(contentMode: .fit)
                         .cornerRadius(20)
                     HStack {
-                        Text("Already have an account?")
+                        Text("Don't have an account?")
                         NavigationLink(
                             destination: VStack{
                                 VStack {
                                     HStack {
-                                        Text("Log in")
+                                        Text("Register")
                                             .font(.largeTitle)
                                             .fontWeight(.bold)
                                         Spacer()
@@ -53,13 +53,17 @@ struct LoginView: View {
                                         .cornerRadius(20)
                                         .padding(.bottom)
                                     VStack{
+                                        HStack{
+                                            InputView(placeholder: "First Name", color: Color.aYellow, bindingText: $firstName)
+                                            InputView(placeholder: "Last Name", color: Color.aYellow, bindingText: $lastName)
+                                        }.padding(.top)
                                         InputView(placeholder: "Email", color: Color.aYellow, bindingText: $email)
                                         InputView(placeholder: "Username", color: Color.aYellow, bindingText: $userName)
                                         InputView(placeholder: "Password", color: Color.aYellow, bindingText: $password)
                                         Button(action: {
-                                            logIn()
+                                            signUp()
                                         }, label: {
-                                            Text("Log In")
+                                            Text("Sign up")
                                                 .font(.title)
                                                 .padding()
                                                 .foregroundColor(.aYellow)
@@ -72,7 +76,7 @@ struct LoginView: View {
                             
                             label: {
                                 HStack{
-                                    Text("Log in")
+                                    Text("Register")
                                     Image(systemName: "chevron.right")
                                 }
                                 
@@ -80,27 +84,21 @@ struct LoginView: View {
                             })
                     }.padding(.vertical)
                     
-                    
-                    HStack{
-                        InputView(placeholder: "First Name", color: Color.aRed, bindingText: $firstName)
-                        InputView(placeholder: "Last Name", color: Color.aRed, bindingText: $lastName)
-                    }.padding(.top)
                     InputView(placeholder: "Email", color: Color.aRed, bindingText: $email)
                     InputView(placeholder: "Username", color: Color.aRed, bindingText: $userName)
                     InputView(placeholder: "Password", color: Color.aRed, bindingText: $password)
                     Button(action: {
-                        signUp()
+                        logIn()
                     }, label: {
-                        Text("Sign Up")
+                        Text("Log in")
                             .font(.title)
                             .padding()
                             .foregroundColor(.aRed)
-
                     })
 
                 }
                 .padding()
-                .navigationTitle("Register")
+                .navigationTitle("Log in")
             }.accentColor(.red)
             
         
