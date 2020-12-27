@@ -31,7 +31,9 @@ class SessionStore: ObservableObject {
                     displayName: authResult!.user.displayName,
                     userName: userName,
                     firstName: firstName,
-                    lastName: lastName
+                    lastName: lastName,
+                    relationships: [[userName: UUID().uuidString]],
+                    lastConversation: userName
                 )
                 
                 // insert user to firebase
@@ -52,6 +54,7 @@ class SessionStore: ObservableObject {
             
             let firstName = userObject?["first_name"] as! String
             let lastName = userObject?["last_name"] as! String
+            let relationships = userObject?["relationships"] as! [NSDictionary]
             
             print("GOT USER WITH FIRSTNAME \(firstName) AND LASTNAME \(lastName)")
             
@@ -68,7 +71,9 @@ class SessionStore: ObservableObject {
                         displayName: authResult!.user.displayName,
                         userName: userName,
                         firstName: firstName,
-                        lastName: lastName
+                        lastName: lastName,
+                        relationships: relationships,
+                        lastConversation: userName
                     )
                     
                     // update current fcm token in case logged in on new device

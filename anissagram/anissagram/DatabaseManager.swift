@@ -25,8 +25,9 @@ final class DatabaseManager {
         
         // add user to database
         database.child("users").child(user.userName!).setValue([
-            "first_name":user.firstName!,
-            "last_name":user.lastName!
+            "first_name": user.firstName!,
+            "last_name": user.lastName!,
+            "relationships": user.relationships!
         ])
         
         // set current device fcm token
