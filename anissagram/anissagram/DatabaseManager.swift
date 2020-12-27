@@ -23,12 +23,26 @@ final class DatabaseManager {
     
     public func insertUser(user: User){
         
-        // add user to database
-        database.child("users").child(user.userName!).setValue([
+        // setting inital data for user
+        let userBody : NSDictionary = [
             "first_name": user.firstName!,
             "last_name": user.lastName!,
             "relationships": user.relationships!
-        ])
+        ]
+        
+        // setting inital relationship as uuid of relationship pointing to self username
+        let relationshipBody : NSDictionary = [
+            user.relationships![user.userName!]!: user.userName!
+        ]
+        
+        // setting inital data for user and first relationships
+        let updates = [
+            "users/\(user.userName!)/" : userBody,
+            "relationships/" : relationshipBody
+        ]
+        
+        // add user to database
+        database.updateChildValues(updates)
         
         // set current device fcm token
         uploadDeviceToken(userName: user.userName!)
@@ -55,6 +69,10 @@ final class DatabaseManager {
             }
             
         })
+    }
+    
+    public func addRelationship(userName: String, relationshipUser: String) {
+        
     }
     
 }
