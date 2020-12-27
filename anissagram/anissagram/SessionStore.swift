@@ -41,31 +41,41 @@ class SessionStore: ObservableObject {
     }
 
     // TODO: Sign in an existing user with Firebase AUthentication
-    func signIn(email: String, password: String) {
-        print("sign in new user")
-        Auth.auth().signIn(withEmail: email, password: password, completion: { authResult, err in
+    func signIn(email: String, password: String, userName: String) {
+        
+        DatabaseManager.shared.retrieveUserByUsername(userName: userName) { (userObject, error) in
             
-            // grab this data from firebase
-            let userName = "ranchgod"
-            let firstName = "reese"
-            let lastName = "gyllenhammer"
-            
-            if err != nil {
-                print("reese we are in the doghouse now")
-            } else {
-                self.session = User(
-                    uid: authResult!.user.uid,
-                    email: authResult!.user.email,
-                    displayName: authResult!.user.displayName,
-                    userName: userName,
-                    firstName: firstName,
-                    lastName: lastName
-                )
-                
-                // update current fcm token in case logged in on new device
-                DatabaseManager.shared.uploadDeviceToken(userName: self.session!.userName!)
+            if (error) {
+                print("Unable to retrieve user from database, please check that the name is correct")
+                return
             }
-        })
+            
+            let firstName = userObject?["first_name"] as! String
+            let lastName = userObject?["last_name"] as! String
+            
+            print("GOT USER WITH FIRSTNAME \(firstName) AND LASTNAME \(lastName)")
+            
+            print("sign in new user")
+            Auth.auth().signIn(withEmail: email, password: password, completion: { authResult, err in
+                
+                // grab this data from firebase
+                if err != nil {
+                    print("reese we are in the doghouse now")
+                } else {
+                    self.session = User(
+                        uid: authResult!.user.uid,
+                        email: authResult!.user.email,
+                        displayName: authResult!.user.displayName,
+                        userName: userName,
+                        firstName: firstName,
+                        lastName: lastName
+                    )
+                    
+                    // update current fcm token in case logged in on new device
+                    DatabaseManager.shared.uploadDeviceToken(userName: self.session!.userName!)
+                }
+            })
+        }
     }
 
     // TODO: Sign out the current user

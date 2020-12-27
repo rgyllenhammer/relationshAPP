@@ -97,40 +97,7 @@ struct LoginView: View {
                             .foregroundColor(.aRed)
 
                     })
-                    
-                    Spacer()
-                    
-//                    NavigationLink(
-//                        destination:
-//                            VStack{
-//                                FormView(signingIn: true, email: $email, password: $password)
-//
-//                                Button(action: {logIn()}, label: {
-//                                    Text("Submit")
-//                                }).background(Color.blue).foregroundColor(.white)
-//                            }
-//                        ,label: {
-//                            ButtonView(signingIn: true)
-//                        })
-                    
-                    
-                    // sign up nav link
-//                    NavigationLink(
-//                        destination:
-//                            VStack{
-//                                FormView(signingIn: false, email: $email, password: $password)
-//                                TextField("Username", text: $userName)
-//                                TextField("First Name", text: $firstName)
-//                                TextField("Last Name", text: $lastName)
-//
-//                                Button(action: {signUp()}, label: {
-//                                    Text("Submit")
-//                                }).background(Color.red).foregroundColor(.white)
-//                            }
-//
-//                        ,label: {
-//                            ButtonView(signingIn: false)
-//                        })
+
                 }
                 .padding()
                 .navigationTitle("Register")
@@ -144,7 +111,7 @@ struct LoginView: View {
     // TODO: Log in an existing user to Firebase Authentication
     func logIn() {
         print("user log in")
-        session.signIn(email: email, password: password)
+        session.signIn(email: email, password: password, userName: userName)
     }
     
     // TODO: Sign up a new user to Firebase Authentication
@@ -195,7 +162,7 @@ struct InputView : View {
         VStack{
             TextField(placeholder, text: $bindingText, onEditingChanged: {edit in clicked = edit})
                 .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
-                .font(.title)
+                .font(.title2)
             HorizontalLine(color: clicked ? color : Color.gray, height: 2.0)
         }
         .padding(.bottom)
