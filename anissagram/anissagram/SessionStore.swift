@@ -32,7 +32,7 @@ class SessionStore: ObservableObject {
                     userName: userName,
                     firstName: firstName,
                     lastName: lastName,
-                    relationships: [[userName: UUID().uuidString]],
+                    relationships: [userName: UUID().uuidString],
                     lastConversation: userName
                 )
                 
@@ -54,7 +54,7 @@ class SessionStore: ObservableObject {
             
             let firstName = userObject?["first_name"] as! String
             let lastName = userObject?["last_name"] as! String
-            let relationships = userObject?["relationships"] as! [NSDictionary]
+            let relationships = userObject?["relationships"] as! NSDictionary
             
             print("GOT USER WITH FIRSTNAME \(firstName) AND LASTNAME \(lastName)")
             

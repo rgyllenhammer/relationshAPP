@@ -14,10 +14,10 @@ class User {
     var userName: String?
     var firstName: String?
     var lastName: String?
-    var relationships: [NSDictionary]?
+    var relationships: NSDictionary?
     var lastConversation: String?
     
-    init(uid: String, email: String?, displayName: String?, userName: String?, firstName: String?, lastName: String?, relationships: [NSDictionary]?, lastConversation: String?) {
+    init(uid: String, email: String?, displayName: String?, userName: String?, firstName: String?, lastName: String?, relationships: NSDictionary?, lastConversation: String?) {
         self.uid = uid
         self.email = email
         self.displayName = displayName
