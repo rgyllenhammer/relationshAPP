@@ -18,9 +18,21 @@ struct LoveView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack{
+                VStack{
+                    HStack{
+                        Text("Request attention!").font(.largeTitle).fontWeight(.bold)
+                        Spacer()
+                    }
+                    HStack{
+                        Text("From")
+                        Text("@anissa").foregroundColor(.aYellow)
+                        Spacer()
+                    }.font(.title3)
+                }
+                .padding(.bottom)
                 HStack{
                     HStack{
-                        Text("Need Level:")
+                        Text("Level:")
                         Text("\(numLove)").foregroundColor(.orange).fontWeight(.bold)
                     }.font(.title)
                     Spacer()
@@ -47,7 +59,7 @@ struct LoveView: View {
 //                        Alert(title: Text("Request Sent!"), message: Text("Succesfully sent \(userToText.sendTo!) an attention request!"), dismissButton: .default(Text("Got it!")))
                         Alert(title: Text("Request Sent!"), message: Text("Succesfully sent \("reese") an attention request!"), dismissButton: .default(Text("Got it!")))
                     }
-                }.padding()
+                }
 
                 Spacer()
                 HStack{
@@ -68,7 +80,7 @@ struct LoveView: View {
                     Spacer()
                 }
 
-            }.padding(.bottom, 50)
+            }.padding()
         }
         
     }

@@ -26,12 +26,6 @@ struct LoginView: View {
             NavigationView {
      
                 VStack(spacing: 0){
-                    // sign in nav link
-//                    ZStack{
-//                        Image("snapagram_logo").resizable()
-//                    }.frame(width: 200, height: 200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                    
-//                    Spacer()
                     Image("anissagram")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
