@@ -20,6 +20,15 @@ struct LoveView: View {
         ZStack {
             NavigationView {
                 GeometryReader { geometry in
+                    Button(action: {
+                        print(session.session?.userName)
+                        print(session.session?.email)
+                        print(session.session?.lastConversation)
+                        print(session.session?.relationships)
+                        
+                    }, label: {
+                        /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
+                    })
                     VStack{
                         VStack{
                             HStack{
@@ -28,8 +37,7 @@ struct LoveView: View {
                             }
                             HStack{
                                 Text("From")
-        //                        Text("@\((session.session?.lastConversation) ?? "nil" )").foregroundColor(.aYellow)
-                                Text("@\("anissa")")
+                                Text("@\((session.session?.lastConversation) ?? "nil" )").foregroundColor(.aYellow)
                                     .foregroundColor(.aYellow)
                                     .onTapGesture {
                                         self.show.toggle()
@@ -95,6 +103,7 @@ struct LoveView: View {
                 .navigationBarHidden(true)
             }
             
+            // pops up the reader to display users to choose
             if self.show {
                 GeometryReader{ geometry in
                     VStack {
@@ -125,9 +134,11 @@ struct LoveView: View {
 
 struct PoplistView: View {
     var body : some View {
+        
+        
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
-                ForEach(0..<25, id: \.self) { i in
+                ForEach(0..<2, id: \.self) { i in
                     ZStack(alignment: .trailing) {
                         HStack {
                             Image("anissagram").resizable()
@@ -154,6 +165,7 @@ struct PoplistView: View {
 }
 
 struct LoveView_Previews: PreviewProvider {
+
     static var previews: some View {
         LoveView()
     }
