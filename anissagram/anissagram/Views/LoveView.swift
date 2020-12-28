@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import Foundation
 
 struct LoveView: View {
     
@@ -15,20 +16,12 @@ struct LoveView: View {
     @State var numLove = 0
     @State var fullSize = true
     @State var show = false
+    @State var lastConversation : String = "nil"
     
     var body: some View {
         ZStack {
             NavigationView {
                 GeometryReader { geometry in
-                    Button(action: {
-                        print(session.session?.userName)
-                        print(session.session?.email)
-                        print(session.session?.lastConversation)
-                        print(session.session?.relationships)
-                        
-                    }, label: {
-                        /*@START_MENU_TOKEN@*/Text("Button")/*@END_MENU_TOKEN@*/
-                    })
                     VStack{
                         VStack{
                             HStack{
@@ -37,7 +30,7 @@ struct LoveView: View {
                             }
                             HStack{
                                 Text("From")
-                                Text("@\((session.session?.lastConversation) ?? "nil" )").foregroundColor(.aYellow)
+                                Text("@\(lastConversation)").foregroundColor(.aYellow)
                                     .foregroundColor(.aYellow)
                                     .onTapGesture {
                                         self.show.toggle()
@@ -108,7 +101,7 @@ struct LoveView: View {
                 GeometryReader{ geometry in
                     VStack {
                         VStack {
-                            PoplistView()
+                            PoplistView(userNames: createUserNames(relationships: self.session.session?.relationships), lastConversation: $lastConversation, show: $show)
                             Button(action: {
                                 self.show.toggle()
                             }, label: {
@@ -126,35 +119,52 @@ struct LoveView: View {
                 }.background(Color.black.opacity(0.5).edgesIgnoringSafeArea(.all))
             }
             
-        }
-        
+        }.onAppear(perform: {
+            self.lastConversation = self.session.session?.lastConversation ?? "nil"
+        })
         
     }
+    
+    func createUserNames(relationships: NSDictionary?) -> [String]{
+        return relationships?.allKeys as? [String] ?? Array(repeating: "nil", count: 25)
+    }
+    
 }
 
 struct PoplistView: View {
+    
+    var userNames : [String]
+    @Binding var lastConversation : String
+    @Binding var show : Bool
+    
     var body : some View {
         
         
         ScrollView(.vertical, showsIndicators: false) {
             VStack {
-                ForEach(0..<2, id: \.self) { i in
+                HStack {
+                    Text("Relationships:").font(.title).fontWeight(.bold)
+                    Spacer()
+                }
+                ForEach(userNames, id: \.self) { name in
                     ZStack(alignment: .trailing) {
                         HStack {
                             Image("anissagram").resizable()
                                 .frame(width: 55, height: 55)
                                 .clipShape(Circle())
                             VStack(alignment: .leading) {
-                                Text("@ranchgod\(i)").fontWeight(.semibold)
-                                Text("Hello reese")
+                                Text("@\(name)").fontWeight(.semibold)
+                                Text("Choose Relationship")
                                 Divider()
                             }
                             .padding(.top)
 
+                        }.onTapGesture {
+                            lastConversation = name
+                            show.toggle()
                         }
                         Image(systemName: "arrow.right").foregroundColor(.gray)
                     }
-
                 }
             }
             .padding()
