@@ -23,6 +23,11 @@ struct InfoView: View {
                     Text("You are probably wondering what this app does, so I will break it down by each tab.")
                     Spacer()
                 }.padding(.bottom).foregroundColor(.gray)
+                Button(action: {
+                    DatabaseManager.shared.addRelationship(userName: "ranchgod", relationshipUser: "ranchgod2", relationshipUUID: UUID().uuidString)
+                }, label: {
+                    Text("add relationship")
+                })
                 HStack{
                     Text("Tabs").font(.title).fontWeight(.bold)
                     Spacer()

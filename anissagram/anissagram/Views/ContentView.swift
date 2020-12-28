@@ -21,14 +21,12 @@ struct ContentView: View {
             } else {
                 TabView{
                     // pass in user to text to change it if need be
-//                    InfoView().environmentObject(userToText)
                     InfoView()
                         .tabItem {
                             Image(systemName: "book.fill")
                             Text("Info")
                         }
                     // pass in user to text because this is where the texting happens
-//                    LoveView().environmentObject(userToText)
                     LoveView().environmentObject(session)
                         .tabItem {
                             Image(systemName: "suit.heart.fill")
