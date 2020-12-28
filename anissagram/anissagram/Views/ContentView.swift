@@ -50,30 +50,23 @@ struct ContentView: View {
                     UITabBar.appearance().barTintColor = .white
                     if (session.session == nil) {
                         print("session is nil, loading cached username to fetch from firebase")
-                        self.load()
+                        self.load(user: Auth.auth().currentUser)
                     } else {
                         print("session is not nil, cacheing username")
                         self.save()
                     }
                 })
-//                {
-//                    UITabBar.appearance().barTintColor = .white
-//                    if (session.session == nil) {
-//                        print("session is nil, loading cached username to fetch from firebase")
-//                        self.load()
-//                    } else {
-//                        print("session is not nil, cacheing username")
-//                        self.save()
-//                    }
-//
-//                }
             }
         }
     }
     
-    func load() {
-        let cachedUsername = cachedDefaults.string(forKey: "username")
-        currentUserName = cachedUsername ?? "nil"
+    func load(user: FirebaseAuth.User?) {
+        let cachedUsername = cachedDefaults.string(forKey: "username") ?? "nil"
+        let email = (user?.email!)!
+        let uid  = user?.uid
+        let displayName = user?.displayName ?? "nil"
+        
+        session.setupUser(email: email, uid: uid!, displayName: displayName, userName: cachedUsername)
     }
     
     func save() {

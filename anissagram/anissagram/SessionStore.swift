@@ -82,6 +82,30 @@ class SessionStore: ObservableObject {
             })
         }
     }
+    
+    func setupUser(email: String, uid: String, displayName: String, userName: String){
+        DatabaseManager.shared.retrieveUserByUsername(userName: userName) { (userObject, error) in
+            if (error) {
+                print("Unable to retrieve user from database, please check that the name is correct")
+                return
+            }
+            
+            let firstName = userObject?["first_name"] as! String
+            let lastName = userObject?["last_name"] as! String
+            let relationships = userObject?["relationships"] as! NSDictionary
+            
+            self.session = User(
+                uid: uid,
+                email: email,
+                displayName: displayName,
+                userName: userName,
+                firstName: firstName,
+                lastName: lastName,
+                relationships: relationships,
+                lastConversation: userName
+            )
+        }
+    }
 
     // TODO: Sign out the current user
     func signOut() {
