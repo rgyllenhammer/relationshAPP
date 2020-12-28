@@ -16,7 +16,7 @@ struct LoveView: View {
     @State var numLove = 0
     @State var fullSize = true
     @State var show = false
-    @State var lastConversation : String = "nil"
+    @State var lastConversation = "Choose user"
     
     var body: some View {
         ZStack {

@@ -12,6 +12,8 @@ struct ContentView: View {
     
 //    @EnvironmentObject var userToText : User
     @EnvironmentObject var session: SessionStore
+    var cachedDefaults = UserDefaults.standard
+    @State var currentUserName = ""
     
     var body: some View {
         
@@ -44,11 +46,39 @@ struct ContentView: View {
                         }
                 }
                 .accentColor(.red)
-                .onAppear() {
+                .onAppear(perform: {
                     UITabBar.appearance().barTintColor = .white
-                }
+                    if (session.session == nil) {
+                        print("session is nil, loading cached username to fetch from firebase")
+                        self.load()
+                    } else {
+                        print("session is not nil, cacheing username")
+                        self.save()
+                    }
+                })
+//                {
+//                    UITabBar.appearance().barTintColor = .white
+//                    if (session.session == nil) {
+//                        print("session is nil, loading cached username to fetch from firebase")
+//                        self.load()
+//                    } else {
+//                        print("session is not nil, cacheing username")
+//                        self.save()
+//                    }
+//
+//                }
             }
         }
+    }
+    
+    func load() {
+        let cachedUsername = cachedDefaults.string(forKey: "username")
+        currentUserName = cachedUsername ?? "nil"
+    }
+    
+    func save() {
+        currentUserName = (self.session.session?.userName!)!
+        cachedDefaults.set(session.session?.userName!, forKey: "username")
     }
 }
 
