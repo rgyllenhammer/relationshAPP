@@ -22,7 +22,6 @@ struct LoginView: View {
     
     var body: some View {
 
-
             NavigationView {
      
                 VStack(spacing: 0){
@@ -94,6 +93,7 @@ struct LoginView: View {
                 }
                 .navigationTitle("Log in")
                 .padding()
+                
 
             }
             .accentColor(.red)

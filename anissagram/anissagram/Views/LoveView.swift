@@ -47,7 +47,7 @@ struct LoveView: View {
                             Spacer()
                             Button(action: {
                                 // Firebase communication
-                                DatabaseManager.shared.sendNotification(sendTo: "\(session)", sendFrom: "anissa", numLove: numLove)
+                                DatabaseManager.shared.sendNotification(sendTo: "\("reese")", sendFrom: "anissa", numLove: numLove)
 
                                 // Haptic Feedback
                                 let impactMed = UIImpactFeedbackGenerator(style: .medium)

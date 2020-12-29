@@ -10,10 +10,13 @@ import FirebaseAuth
 
 struct ContentView: View {
     
-//    @EnvironmentObject var userToText : User
+    
+    // state and environment variables
     @EnvironmentObject var session: SessionStore
-    var cachedDefaults = UserDefaults.standard
     @State var currentUserName = ""
+    
+    // local variables
+    var cachedDefaults = UserDefaults.standard
     
     var body: some View {
         
@@ -21,14 +24,13 @@ struct ContentView: View {
             if Auth.auth().currentUser == nil {
                 LoginView()
             } else {
-                TabView{
-                    // pass in user to text to change it if need be
-                    InfoView()
+                TabView {
+//                    InfoView()
+                    TestView()
                         .tabItem {
                             Image(systemName: "book.fill")
                             Text("Info")
                         }
-                    // pass in user to text because this is where the texting happens
                     LoveView().environmentObject(session)
                         .tabItem {
                             Image(systemName: "suit.heart.fill")
