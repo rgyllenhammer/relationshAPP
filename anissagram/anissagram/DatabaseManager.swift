@@ -9,10 +9,13 @@ import Foundation
 import Firebase
 
 final class DatabaseManager {
+    // shared public accessor
     static let shared = DatabaseManager()
     
+    // reference to database
     private let database = Database.database().reference()
     
+    // functions
     public func sendNotification(sendTo: String, sendFrom: String, numLove: Int) {
         
         // craft new uuid and add message to database
@@ -83,6 +86,17 @@ final class DatabaseManager {
         ] as [String : Any]
         
         database.updateChildValues(updates)
+    }
+    
+    public func downloadUsers(completion: @escaping (([String]) -> Void)){
+        database.child("users").observeSingleEvent(of: .value) { snapshot in
+            var users : [String] = []
+            for user in snapshot.children {
+                let user_snap = user as! DataSnapshot
+                users.append(user_snap.key)
+            }
+            completion(users)
+        }
     }
     
 }

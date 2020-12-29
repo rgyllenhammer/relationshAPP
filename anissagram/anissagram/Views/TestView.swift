@@ -10,11 +10,11 @@ import SwiftUI
 struct TestView: View {
     @State var userTerm = ""
     @State var showingUseers = false
-    var names = ["reese", "ranchgod", "anissa", "jadyn", "jaqueline", "reese2"]
+    @State var names = ["nil"]
 
     var body: some View {
         VStack{
-            SearchBar(userTerm: $userTerm, showingUsers: $showingUseers)
+            SearchBar(userTerm: $userTerm, showingUsers: $showingUseers, names: $names)
             ZStack {
                 ScrollView {
                     HStack{
@@ -37,6 +37,7 @@ struct SearchBar : View {
 
     @Binding var userTerm : String
     @Binding var showingUsers : Bool
+    @Binding var names : [String]
     
     func hideKeyBoard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
@@ -64,6 +65,9 @@ struct SearchBar : View {
                 }
             }.onTapGesture {
                 self.showingUsers = true
+                DatabaseManager.shared.downloadUsers() { users in
+                    self.names = users
+                }
             }
         }
     }
