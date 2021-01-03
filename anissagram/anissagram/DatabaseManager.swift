@@ -53,9 +53,14 @@ final class DatabaseManager {
     }
     
     public func uploadDeviceToken(userName: String){
+        print("attempting to yeeeee")
         Messaging.messaging().token { token, error in
           if let error = error {
+            
+            print("unauth")
             print("Error fetching FCM registration token: \(error)")
+            
+            
           } else if let token = token {
             print("FCM registration token: \(token)")
             self.database.child("users").child(userName).child("deviceID").setValue(token)

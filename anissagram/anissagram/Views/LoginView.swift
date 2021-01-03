@@ -138,7 +138,7 @@ struct InputView : View {
     var body: some View {
         VStack{
             TextField(placeholder, text: $bindingText, onEditingChanged: {edit in clicked = edit})
-                .autocapitalization(/*@START_MENU_TOKEN@*/.none/*@END_MENU_TOKEN@*/)
+                .autocapitalization(.none)
                 .font(.title2)
             HorizontalLine(color: clicked ? color : Color.gray, height: 2.0)
         }
@@ -172,18 +172,4 @@ struct HorizontalLine: View {
     var body: some View {
         HorizontalLineShape().fill(self.color!).frame(minWidth: 0, maxWidth: .infinity, minHeight: height, maxHeight: height)
     }
-}
-
-struct ButtonView : View {
-    var signingIn : Bool
-    
-    var body: some View {
-        
-        ZStack{
-            Text(signingIn ? "Sign In" : "Sign Up")
-        }.foregroundColor(.white).frame(width: 200, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/).background(signingIn ? Color.red : Color.blue).cornerRadius(20)
-        
-    }
-    
-    
 }

@@ -45,26 +45,30 @@ class SessionStore: ObservableObject {
     // TODO: Sign in an existing user with Firebase AUthentication
     func signIn(email: String, password: String, userName: String) {
         
-        DatabaseManager.shared.retrieveUserByUsername(userName: userName) { (userObject, error) in
+        Auth.auth().signIn(withEmail: email, password: password, completion: { authResult, err in
             
-            if (error) {
+            if (err != nil) {
                 print("Unable to retrieve user from database, please check that the name is correct")
                 return
             }
             
-            let firstName = userObject?["first_name"] as! String
-            let lastName = userObject?["last_name"] as! String
-            let relationships = userObject?["relationships"] as! NSDictionary
-            
-            print("GOT USER WITH FIRSTNAME \(firstName) AND LASTNAME \(lastName)")
-            
-            print("sign in new user")
-            Auth.auth().signIn(withEmail: email, password: password, completion: { authResult, err in
+            DatabaseManager.shared.retrieveUserByUsername(userName: userName) { (userObject, error) in
                 
                 // grab this data from firebase
-                if err != nil {
+                
+                let firstName = userObject?["first_name"] as! String
+                let lastName = userObject?["last_name"] as! String
+                let relationships = userObject?["relationships"] as! NSDictionary
+                
+                print("GOT USER WITH FIRSTNAME \(firstName) AND LASTNAME \(lastName)")
+                print("sign in new user")
+                
+                if (error) {
                     print("Unable to login, check username and password")
                 } else {
+                    
+                    print("error is not nil, the problem is writing before we are authorized")
+                    
                     self.session = User(
                         uid: authResult!.user.uid,
                         email: authResult!.user.email,
@@ -79,8 +83,8 @@ class SessionStore: ObservableObject {
                     // update current fcm token in case logged in on new device
                     DatabaseManager.shared.uploadDeviceToken(userName: self.session!.userName!)
                 }
-            })
-        }
+            }
+        })
     }
     
     func setupUser(email: String, uid: String, displayName: String, userName: String){

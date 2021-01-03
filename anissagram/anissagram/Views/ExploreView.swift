@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TestView: View {
+struct ExploreView: View {
     @State var userTerm = ""
     @State var showingUseers = false
     @State var names = ["nil"]
@@ -52,7 +52,7 @@ struct SearchBar : View {
                     .font(.title3)
                     .background(Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255.0, opacity: 1.0))
                     .cornerRadius(5)
-//                    .padding()
+                    .autocapitalization(.none)
                 if (self.showingUsers) {
                     Button(action: {
                         self.showingUsers = false
@@ -83,7 +83,7 @@ struct SearchResults : View {
     var body: some View {
         if (self.showingUsers && !self.userTerm.isEmpty) {
             ScrollView{
-                ForEach((names).filter({$0.contains(userTerm.lowercased())}), id: \.self) { name in
+                ForEach((names).filter({$0.hasPrefix(userTerm.lowercased())}), id: \.self) { name in
                     HStack {
                         Image("anissagram").resizable()
                             .frame(width: 55, height: 55)
@@ -105,8 +105,8 @@ struct SearchResults : View {
 
 
 
-struct TestView_Previews: PreviewProvider {
+struct ExploreView_Previews: PreviewProvider {
     static var previews: some View {
-        TestView()
+        ExploreView()
     }
 }
