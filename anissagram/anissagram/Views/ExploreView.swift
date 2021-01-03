@@ -154,6 +154,9 @@ struct SearchResultItem : View {
     @EnvironmentObject var session : SessionStore
     var name : String
     
+    // INSANE HACKY PLEASE REESE REMEMEBER TO CHANGE THIS
+    var newUUID = UUID().uuidString
+    
     func isInRelationship(with: String) -> Bool {
         return session.session?.relationships?[name] != nil
     }
@@ -172,7 +175,12 @@ struct SearchResultItem : View {
             
             Button(action: {
                 if (!(isInRelationship(with: name) || toggled )) {
-                    DatabaseManager.shared.addRelationship(userName: session.session?.userName ?? "ranchgod", relationshipUser: name, relationshipUUID: UUID().uuidString)
+                    DatabaseManager.shared.addRelationship(userName: session.session?.userName ?? "ranchgod", relationshipUser: name, relationshipUUID: newUUID)
+                    
+                    // SO HACKY PLEASE REESE
+                    var muteable : NSMutableDictionary = NSMutableDictionary(dictionary: (session.session?.relationships!)!)
+                    muteable[name] = newUUID
+                    session.session?.relationships = muteable
                 }
                 
                 self.toggled = true
