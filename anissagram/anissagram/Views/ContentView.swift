@@ -26,7 +26,7 @@ struct ContentView: View {
             } else {
                 TabView {
 //                    InfoView()
-                    ExploreView()
+                    ExploreView().environmentObject(session)
                         .tabItem {
                             Image(systemName: "book.fill")
                             Text("Info")

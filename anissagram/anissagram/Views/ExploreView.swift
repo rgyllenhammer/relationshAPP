@@ -10,6 +10,7 @@ struct ExploreView: View {
     @State var userTerm = ""
     @State var showingUseers = false
     @State var names = ["nil"]
+    @EnvironmentObject var session : SessionStore
     
     func calculateWidth(pad: CGFloat) -> CGFloat {
         return (UIScreen.main.bounds.width - (pad * 4)) / 3
@@ -55,6 +56,7 @@ struct ExploreView: View {
                         NewGridItem(width: calculateWidth(pad: 10), color: .aOrange, text: "Pending")
                         NewGridItem(width: calculateWidth(pad: 10), color: .aYellow, text: "Requests")
                     }
+                    .padding(.bottom)
 
                 }
                 SearchResults(userTerm: $userTerm, showingUsers: $showingUseers, names: names)
@@ -131,27 +133,49 @@ struct SearchResults : View {
     @Binding var userTerm : String
     @Binding var showingUsers : Bool
     var names : [String]
+    @State var added = false
+    @EnvironmentObject var session : SessionStore
 
 
     var body: some View {
         if (self.showingUsers && !self.userTerm.isEmpty) {
             ScrollView{
                 ForEach((names).filter({$0.hasPrefix(userTerm.lowercased())}), id: \.self) { name in
-                    HStack {
-                        Image("anissagram").resizable()
-                            .frame(width: 55, height: 55)
-                            .clipShape(Circle())
-                        VStack(alignment: .leading) {
-                            Text("@\(name)").fontWeight(.semibold)
-                            Text("Choose Relationship")
-                            Divider()
-                        }
-                        .padding(.top)
-
-                    }
-//                    .padding(.horizontal)
+                    SearchResultItem(name: name).environmentObject(session)
                 }
             }.background(Color.white)
+        }
+    }
+}
+
+struct SearchResultItem : View {
+    @State var inRelationship = false
+    @EnvironmentObject var session : SessionStore
+    var name : String
+    
+    func isInRelationship(with: String) -> Bool {
+        return session.session?.relationships?[name] != nil
+    }
+    
+    var body: some View{
+        HStack {
+            Image("anissagram").resizable()
+                .frame(width: 55, height: 55)
+                .clipShape(Circle())
+            VStack(alignment: .leading) {
+                Text("@\(name)").fontWeight(.semibold)
+                Text("Choose Relationship")
+                Divider()
+            }
+            .padding(.top)
+            
+            Button(action: {
+               
+            }, label: {
+                Text(isInRelationship(with: name) ? "Delete" : "Add")
+            })
+            .foregroundColor(isInRelationship(with: name) ? .gray : .aRed)
+            .padding(.trailing)
         }
     }
 }
