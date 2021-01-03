@@ -52,9 +52,9 @@ struct ExploreView: View {
                     }
                     .padding(.bottom)
                     HStack {
-                        NewGridItem(width: calculateWidth(pad: 10), color: .aRed, text: "Relations")
-                        NewGridItem(width: calculateWidth(pad: 10), color: .aOrange, text: "Pending")
-                        NewGridItem(width: calculateWidth(pad: 10), color: .aYellow, text: "Requests")
+                        NewGridItem(width: calculateWidth(pad: 10), color: .aRed, text: "Relations", numberToDisplay: session.session?.relationships?.count ?? 0)
+                        NewGridItem(width: calculateWidth(pad: 10), color: .aOrange, text: "Pending", numberToDisplay: 0)
+                        NewGridItem(width: calculateWidth(pad: 10), color: .aYellow, text: "Requests", numberToDisplay: 0)
                     }
                     .padding(.bottom)
 
@@ -70,11 +70,12 @@ struct NewGridItem : View {
     var width: CGFloat
     var color: Color
     var text: String
+    var numberToDisplay: Int
 
     var body: some View {
         VStack {
             VStack {
-                Text("1")
+                Text("\(numberToDisplay)")
                     .font(.title)
                     .fontWeight(.bold)
                 Text(text)
@@ -149,7 +150,7 @@ struct SearchResults : View {
 }
 
 struct SearchResultItem : View {
-    @State var inRelationship = false
+    @State var toggled = false
     @EnvironmentObject var session : SessionStore
     var name : String
     
@@ -170,11 +171,15 @@ struct SearchResultItem : View {
             .padding(.top)
             
             Button(action: {
-               
+                if (!(isInRelationship(with: name) || toggled )) {
+                    DatabaseManager.shared.addRelationship(userName: session.session?.userName ?? "ranchgod", relationshipUser: name, relationshipUUID: UUID().uuidString)
+                }
+                
+                self.toggled = true
             }, label: {
-                Text(isInRelationship(with: name) ? "Delete" : "Add")
+                Text(isInRelationship(with: name) || toggled ? "Delete" : "Add")
             })
-            .foregroundColor(isInRelationship(with: name) ? .gray : .aRed)
+            .foregroundColor(isInRelationship(with: name) || toggled ? .gray : .aRed)
             .padding(.trailing)
         }
     }
