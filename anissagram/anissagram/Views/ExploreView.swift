@@ -1,9 +1,8 @@
-
+//
 //  TestView.swift
 //  anissagram
 //
 //  Created by Reese Gyllenhammer on 12/27/20.
-
 
 import SwiftUI
 
@@ -11,20 +10,52 @@ struct ExploreView: View {
     @State var userTerm = ""
     @State var showingUseers = false
     @State var names = ["nil"]
+    
+    func calculateWidth(pad: CGFloat) -> CGFloat {
+        return (UIScreen.main.bounds.width - (pad * 4)) / 3
+    }
 
     var body: some View {
         VStack{
             SearchBar(userTerm: $userTerm, showingUsers: $showingUseers, names: $names)
             ZStack {
                 ScrollView {
+                        HStack{
+                            Text("@ranchgod")
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                            Spacer()
+                        }.padding(.top)
+
                     HStack{
-                        Text("Happy Birthday Anissa!").font(.largeTitle).fontWeight(.bold)
-                        Spacer()
-                    }.padding(.top)
+                        Image("anissagram")
+                            .resizable()
+                            .frame(width: 100, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .clipShape(Circle())
+
+                        VStack {
+                            HStack{
+                                Text("reese gyllenhammer").font(.title2).fontWeight(.bold)
+                                Spacer()
+                            }
+
+                            HStack {
+                                Text("Im a savage yeah, classy, boujee, ratchet, yeah. Megan the stallion.")
+                                Spacer()
+                            }
+                            .padding(.bottom)
+                            .foregroundColor(.gray)
+
+                        }
+
+                    }
+                    .padding(.bottom)
                     HStack {
-                        Text("You are probably wondering what this app does, so I will break it down by each tab.")
-                        Spacer()
-                    }.padding(.bottom).foregroundColor(.gray)
+                        NewGridItem(width: calculateWidth(pad: 10), color: .aRed, text: "Relations")
+                        NewGridItem(width: calculateWidth(pad: 10), color: .aOrange, text: "Pending")
+                        NewGridItem(width: calculateWidth(pad: 10), color: .aYellow, text: "Requests")
+                    }
+
                 }
                 SearchResults(userTerm: $userTerm, showingUsers: $showingUseers, names: names)
             }
@@ -33,12 +64,34 @@ struct ExploreView: View {
     }
 }
 
+struct NewGridItem : View {
+    var width: CGFloat
+    var color: Color
+    var text: String
+
+    var body: some View {
+        VStack {
+            VStack {
+                Text("1")
+                    .font(.title)
+                    .fontWeight(.bold)
+                Text(text)
+            }
+        }
+        .frame(width: width, height: width * 0.7, alignment: .center)
+        .background(color)
+        .cornerRadius(10.0)
+        .foregroundColor(.white)
+
+    }
+}
+
 struct SearchBar : View {
 
     @Binding var userTerm : String
     @Binding var showingUsers : Bool
     @Binding var names : [String]
-    
+
     func hideKeyBoard() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
