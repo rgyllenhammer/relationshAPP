@@ -30,7 +30,7 @@ final class DatabaseManager {
         let userBody : NSDictionary = [
             "first_name": user.firstName!,
             "last_name": user.lastName!,
-            "relationships": user.relationships!
+            "relationships": user.relationships
         ]
         
         // setting inital relationship as uuid of relationship pointing to self username
@@ -42,7 +42,8 @@ final class DatabaseManager {
         // setting inital data for user and first relationships
         let updates = [
             "users/\(user.userName!)/" : userBody,
-            "relationships/\(user.relationships![user.userName!]!)" : relationshipBody
+            "relationships/\(user.relationships[user.userName!])" : relationshipBody
+//            "relationships/\(user.relationships![user.userName!]!)" : relationshipBody
         ] as [String : Any]
         
         // add user to database

@@ -127,18 +127,21 @@ class SessionStore: ObservableObject {
     }
     
     func isInRelationship(with name: String) -> Bool {
-        return self.session?.relationships?[name] != nil
+        return self.session?.relationships[name] != nil
     }
     
     func addRelationShip(with name: String) {
         let newUUID = UUID().uuidString
-//        DatabaseManager.shared.addRelationship(userName: session?.userName ?? "ranchgod", relationshipUser: name, relationshipUUID: newUUID)
+        if let user = self.session {
+            DatabaseManager.shared.addRelationship(userName: user.userName ?? .username, relationshipUser: name, relationshipUUID: newUUID)
+            
+            let muteable : NSMutableDictionary = NSMutableDictionary(dictionary: user.relationships)
+            muteable[name] = newUUID
+            session?.relationships = muteable
+            
+            self.updateSession()
+        }
         
-        let muteable : NSMutableDictionary = NSMutableDictionary(dictionary: (session?.relationships!)!)
-        muteable[name] = newUUID
-        session?.relationships = muteable
-        
-        self.updateSession()
     }
     
 }

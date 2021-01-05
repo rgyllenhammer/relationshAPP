@@ -19,4 +19,7 @@ extension Color {
 
 extension String {
     static let loading = "loading..."
+    static let username = "ranchgod"
+    static let firstname = "reese"
+    static let lastname = "gyllenhammer"
 }

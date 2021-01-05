@@ -72,10 +72,16 @@ struct ExploreView: View {
         }
         .padding(.horizontal)
         .onAppear(perform: {
-            numberRelations = session.session?.relationships?.count ?? 0
+            if let user = session.session {
+                numberRelations = user.relationships.count
+            }
+//            numberRelations = session.session?.relationships?.count ?? 0
         })
         .onReceive(session.didChange) { (newSession) in
-            numberRelations = newSession.session?.relationships?.count ?? 0
+            if let newUser = newSession.session {
+                numberRelations = newUser.relationships.count
+            }
+//            numberRelations = newSession.session?.relationships?.count ?? 0
         }
     }
 }
