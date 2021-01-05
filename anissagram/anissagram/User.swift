@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import Combine
 
-class User {
+class User : ObservableObject {
+    
     var uid: String
     var email: String?
     var displayName: String?
@@ -16,6 +18,7 @@ class User {
     var lastName: String?
     var relationships: NSDictionary?
     var lastConversation: String?
+    var fullName: String?
     
     init(uid: String, email: String?, displayName: String?, userName: String?, firstName: String?, lastName: String?, relationships: NSDictionary?, lastConversation: String?) {
         self.uid = uid
@@ -26,5 +29,6 @@ class User {
         self.lastName = lastName
         self.relationships = relationships
         self.lastConversation = lastConversation
+        self.fullName = "\(firstName ?? .loading) \(lastName ?? .loading)"
     }
 }

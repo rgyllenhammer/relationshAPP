@@ -14,7 +14,6 @@ struct anissagramApp: App {
     
     var body: some Scene {
         WindowGroup {
-            // assuming anissa will usually be using the app so I default to person to call as mine
             ContentView().environmentObject(SessionStore())
         }
     }

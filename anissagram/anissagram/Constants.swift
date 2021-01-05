@@ -16,3 +16,7 @@ extension Color {
     static let aOrange: Color = Color(red: 254/255, green: 97/255, blue: 43/255, opacity: 1)
     static let aYellow: Color = Color.orange
 }
+
+extension String {
+    static let loading = "loading..."
+}

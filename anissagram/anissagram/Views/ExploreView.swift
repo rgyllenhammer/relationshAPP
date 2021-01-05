@@ -7,11 +7,16 @@
 import SwiftUI
 
 struct ExploreView: View {
+    // STATE CONSTANTS
     @State var userTerm = ""
     @State var showingUseers = false
     @State var names = ["nil"]
+    @State var numberRelations = 0
+    
+    // ENVIRONMENT OBJECTS
     @EnvironmentObject var session : SessionStore
     
+    // VIEW RELATED FUNCTIONS
     func calculateWidth(pad: CGFloat) -> CGFloat {
         return (UIScreen.main.bounds.width - (pad * 4)) / 3
     }
@@ -22,7 +27,7 @@ struct ExploreView: View {
             ZStack {
                 ScrollView {
                         HStack{
-                            Text("@ranchgod")
+                            Text(session.session?.userName ?? .loading)
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
                             Spacer()
@@ -36,7 +41,9 @@ struct ExploreView: View {
 
                         VStack {
                             HStack{
-                                Text("reese gyllenhammer").font(.title2).fontWeight(.bold)
+                                Text(session.session?.fullName ?? .loading)
+                                    .font(.title2)
+                                    .fontWeight(.bold)
                                 Spacer()
                             }
 
@@ -52,17 +59,24 @@ struct ExploreView: View {
                     }
                     .padding(.bottom)
                     HStack {
-                        NewGridItem(width: calculateWidth(pad: 10), color: .aRed, text: "Relations", numberToDisplay: session.session?.relationships?.count ?? 0)
+                        NewGridItem(width: calculateWidth(pad: 10), color: .aRed, text: "Relations", numberToDisplay: numberRelations)
                         NewGridItem(width: calculateWidth(pad: 10), color: .aOrange, text: "Pending", numberToDisplay: 0)
                         NewGridItem(width: calculateWidth(pad: 10), color: .aYellow, text: "Requests", numberToDisplay: 0)
                     }
                     .padding(.bottom)
 
                 }
-                SearchResults(userTerm: $userTerm, showingUsers: $showingUseers, names: names)
+                SearchResults(userTerm: $userTerm, showingUsers: $showingUseers, names: names).environmentObject(session)
             }
             Spacer()
-        }.padding(.horizontal)
+        }
+        .padding(.horizontal)
+        .onAppear(perform: {
+            numberRelations = session.session?.relationships?.count ?? 0
+        })
+        .onReceive(session.didChange) { (newSession) in
+            numberRelations = newSession.session?.relationships?.count ?? 0
+        }
     }
 }
 
@@ -154,13 +168,6 @@ struct SearchResultItem : View {
     @EnvironmentObject var session : SessionStore
     var name : String
     
-    // INSANE HACKY PLEASE REESE REMEMEBER TO CHANGE THIS
-    var newUUID = UUID().uuidString
-    
-    func isInRelationship(with: String) -> Bool {
-        return session.session?.relationships?[name] != nil
-    }
-    
     var body: some View{
         HStack {
             Image("anissagram").resizable()
@@ -174,20 +181,15 @@ struct SearchResultItem : View {
             .padding(.top)
             
             Button(action: {
-                if (!(isInRelationship(with: name) || toggled )) {
-                    DatabaseManager.shared.addRelationship(userName: session.session?.userName ?? "ranchgod", relationshipUser: name, relationshipUUID: newUUID)
-                    
-                    // SO HACKY PLEASE REESE
-                    var muteable : NSMutableDictionary = NSMutableDictionary(dictionary: (session.session?.relationships!)!)
-                    muteable[name] = newUUID
-                    session.session?.relationships = muteable
+                if (!(session.isInRelationship(with: name) || toggled )) {
+                    session.addRelationShip(with: name)
                 }
                 
                 self.toggled = true
             }, label: {
-                Text(isInRelationship(with: name) || toggled ? "Delete" : "Add")
+                Text(session.isInRelationship(with: name) || toggled ? "Delete" : "Add")
             })
-            .foregroundColor(isInRelationship(with: name) || toggled ? .gray : .aRed)
+            .foregroundColor(session.isInRelationship(with: name) || toggled ? .gray : .aRed)
             .padding(.trailing)
         }
     }
