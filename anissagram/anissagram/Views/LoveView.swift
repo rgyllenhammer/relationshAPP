@@ -46,16 +46,19 @@ struct LoveView: View {
                             }.font(.title)
                             Spacer()
                             Button(action: {
-                                // Firebase communication
-                                DatabaseManager.shared.sendNotification(sendTo: "\("reese")", sendFrom: "anissa", numLove: numLove)
-
-                                // Haptic Feedback
+                                // haptic feedback no matter what
                                 let impactMed = UIImpactFeedbackGenerator(style: .medium)
                                 impactMed.impactOccurred()
-
-                                // Re-set values
-                                showingAlert = true
-                                numLove = 0
+                                
+                                // Firebase communication iff user is set
+                                if let user = session.session {
+                                    DatabaseManager.shared.sendNotification(sendTo: lastConversation, sendFrom: user.userName, numLove: numLove)
+                                    
+                                    showingAlert = true
+                                    numLove = 0
+                                } else {
+                                    // TODO show error if user not yet loaded
+                                }
 
                             }, label: {
                                 HStack{
