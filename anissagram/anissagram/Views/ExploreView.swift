@@ -194,12 +194,12 @@ struct SearchResultItem : View {
             
             Button(action: {
                 if (!(session.isInRelationship(with: name) || toggled )) {
-                    session.addRelationShip(with: name)
+                    session.addRequest(with: name)
                 }
                 
                 self.toggled = true
             }, label: {
-                Text(session.isInRelationship(with: name) || toggled ? "Delete" : "Add")
+                Text(session.isInRelationship(with: name) || toggled ? "Pending" : "Add")
             })
             .foregroundColor(session.isInRelationship(with: name) || toggled ? .gray : .aRed)
             .padding(.trailing)

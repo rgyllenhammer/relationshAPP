@@ -94,6 +94,15 @@ final class DatabaseManager {
         database.updateChildValues(updates)
     }
     
+    public func addRequest(userName: String, relationshipUser: String, relationshipUUID: String) {
+        let updates = [
+            "users/\(userName)/pending/\(relationshipUser)": relationshipUUID,
+            "users/\(relationshipUser)/requests/\(userName)": relationshipUUID
+        ] as [String : Any]
+        
+        database.updateChildValues(updates)
+    }
+    
     public func downloadUsers(completion: @escaping (([String]) -> Void)){
         database.child("users").observeSingleEvent(of: .value) { snapshot in
             var users : [String] = []

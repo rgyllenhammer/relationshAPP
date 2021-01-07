@@ -57,8 +57,7 @@ class SessionStore: ObservableObject {
                 let firstName = userObject?["first_name"] as! String
                 let lastName = userObject?["last_name"] as! String
                 let relationships = userObject?["relationships"] as! NSMutableDictionary
-                
-                // values may be nil
+
                 // values may be nil
                 let requests : NSMutableDictionary = userObject?["requests"] as? NSMutableDictionary ?? [:]
                 let pending : NSMutableDictionary = userObject?["pending"] as? NSMutableDictionary ?? [:]
@@ -152,15 +151,13 @@ class SessionStore: ObservableObject {
         }
     }
     
-    func addRequest(with name: String, username: String) {
+    func addRequest(with name: String) {
         let newUUID = UUID().uuidString
         if let user = self.session {
             // CALL TO DBMS FOR ADDING PENDING TO OURS AND REQUEST TO ANOTHER
+            DatabaseManager.shared.addRequest(userName: user.userName, relationshipUser: name, relationshipUUID: newUUID)
             
-            
-            let muteable : NSMutableDictionary = NSMutableDictionary(dictionary: user.relationships)
-            muteable[name] = newUUID
-            session?.relationships = muteable
+            user.pending[name] = newUUID
             
             self.updateSession()
             
