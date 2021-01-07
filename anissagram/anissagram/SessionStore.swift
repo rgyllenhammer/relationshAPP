@@ -31,7 +31,9 @@ class SessionStore: ObservableObject {
                     userName: userName,
                     firstName: firstName,
                     lastName: lastName,
-                    relationships: [userName: UUID().uuidString]
+                    relationships: [userName: UUID().uuidString],
+                    requests: [:],
+                    pending: [:]
                 )
                 
                 // insert user to firebase
@@ -51,11 +53,15 @@ class SessionStore: ObservableObject {
             
             DatabaseManager.shared.retrieveUserByUsername(userName: userName) { (userObject, error) in
                 
-                // grab this data from firebase
-                
+                // values always are populated
                 let firstName = userObject?["first_name"] as! String
                 let lastName = userObject?["last_name"] as! String
-                let relationships = userObject?["relationships"] as! NSDictionary
+                let relationships = userObject?["relationships"] as! NSMutableDictionary
+                
+                // values may be nil
+                // values may be nil
+                let requests : NSMutableDictionary = userObject?["requests"] as? NSMutableDictionary ?? [:]
+                let pending : NSMutableDictionary = userObject?["pending"] as? NSMutableDictionary ?? [:]
                 
                 print("GOT USER WITH FIRSTNAME \(firstName) AND LASTNAME \(lastName)")
                 print("sign in new user")
@@ -73,7 +79,9 @@ class SessionStore: ObservableObject {
                         userName: userName,
                         firstName: firstName,
                         lastName: lastName,
-                        relationships: relationships
+                        relationships: relationships,
+                        requests: requests,
+                        pending: pending
                     )
                     
                     // update current fcm token in case logged in on new device
@@ -92,7 +100,11 @@ class SessionStore: ObservableObject {
             
             let firstName = userObject?["first_name"] as! String
             let lastName = userObject?["last_name"] as! String
-            let relationships = userObject?["relationships"] as! NSDictionary
+            let relationships = userObject?["relationships"] as! NSMutableDictionary
+            
+            // values may be nil
+            let requests : NSMutableDictionary = userObject?["requests"] as? NSMutableDictionary ?? [:]
+            let pending : NSMutableDictionary = userObject?["pending"] as? NSMutableDictionary ?? [:]
             
             self.session = User(
                 uid: uid,
@@ -101,7 +113,9 @@ class SessionStore: ObservableObject {
                 userName: userName,
                 firstName: firstName,
                 lastName: lastName,
-                relationships: relationships
+                relationships: relationships,
+                requests: requests,
+                pending: pending
             )
             
         }
@@ -130,15 +144,28 @@ class SessionStore: ObservableObject {
     func addRelationShip(with name: String) {
         let newUUID = UUID().uuidString
         if let user = self.session {
-            DatabaseManager.shared.addRelationship(userName: user.userName ?? .username, relationshipUser: name, relationshipUUID: newUUID)
+            DatabaseManager.shared.addRelationship(userName: user.userName, relationshipUser: name, relationshipUUID: newUUID)
+            
+            user.relationships[name] = newUUID
+            
+            self.updateSession()
+        }
+    }
+    
+    func addRequest(with name: String, username: String) {
+        let newUUID = UUID().uuidString
+        if let user = self.session {
+            // CALL TO DBMS FOR ADDING PENDING TO OURS AND REQUEST TO ANOTHER
+            
             
             let muteable : NSMutableDictionary = NSMutableDictionary(dictionary: user.relationships)
             muteable[name] = newUUID
             session?.relationships = muteable
             
             self.updateSession()
+            
         }
-        
     }
+    
     
 }

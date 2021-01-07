@@ -30,7 +30,7 @@ final class DatabaseManager {
         let userBody : NSDictionary = [
             "first_name": user.firstName,
             "last_name": user.lastName,
-            "relationships": user.relationships
+            "relationships": user.relationships,
         ]
         
         // setting inital relationship as uuid of relationship pointing to self username
@@ -104,5 +104,10 @@ final class DatabaseManager {
             completion(users)
         }
     }
+    
+//    public func test() {
+//        let testDict : NSMutableDictionary = ["reese":"test"]
+//        database.child("test").setValue(testDict)
+//    }
     
 }

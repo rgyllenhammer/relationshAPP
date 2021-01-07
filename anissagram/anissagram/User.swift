@@ -16,10 +16,15 @@ class User : ObservableObject {
     var userName: String
     var firstName: String
     var lastName: String
-    var relationships: NSDictionary
+    var relationships: NSMutableDictionary
+    var requests : NSMutableDictionary
+    var pending : NSMutableDictionary
     var fullName: String
     
-    init(uid: String, email: String, displayName: String?, userName: String, firstName: String, lastName: String, relationships: NSDictionary) {
+    init(uid: String, email: String, displayName: String?,
+         userName: String, firstName: String, lastName: String,
+         relationships: NSMutableDictionary, requests: NSMutableDictionary, pending: NSMutableDictionary) {
+        
         self.uid = uid
         self.email = email
         self.displayName = displayName
@@ -28,5 +33,7 @@ class User : ObservableObject {
         self.lastName = lastName
         self.relationships = relationships
         self.fullName = "\(firstName) \(lastName)"
+        self.requests = requests
+        self.pending = pending
     }
 }

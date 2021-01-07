@@ -10,8 +10,12 @@ struct ExploreView: View {
     // STATE CONSTANTS
     @State var userTerm = ""
     @State var showingUseers = false
-    @State var names = ["nil"]
+    @State var names : [String] = []
+    
+    // hopefully one day these can be erased and we can detect changes on the user object
     @State var numberRelations = 0
+    @State var numberPending = 0
+    @State var numberRequests = 0
     
     // ENVIRONMENT OBJECTS
     @EnvironmentObject var session : SessionStore
@@ -36,7 +40,7 @@ struct ExploreView: View {
                     HStack{
                         Image("anissagram")
                             .resizable()
-                            .frame(width: 100, height: 100, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                            .frame(width: 100, height: 100, alignment: .center)
                             .clipShape(Circle())
 
                         VStack {
@@ -60,8 +64,8 @@ struct ExploreView: View {
                     .padding(.bottom)
                     HStack {
                         NewGridItem(width: calculateWidth(pad: 10), color: .aRed, text: "Relations", numberToDisplay: numberRelations)
-                        NewGridItem(width: calculateWidth(pad: 10), color: .aOrange, text: "Pending", numberToDisplay: 0)
-                        NewGridItem(width: calculateWidth(pad: 10), color: .aYellow, text: "Requests", numberToDisplay: 0)
+                        NewGridItem(width: calculateWidth(pad: 10), color: .aOrange, text: "Pending", numberToDisplay: numberPending)
+                        NewGridItem(width: calculateWidth(pad: 10), color: .aYellow, text: "Requests", numberToDisplay: numberRequests)
                     }
                     .padding(.bottom)
 
@@ -74,14 +78,16 @@ struct ExploreView: View {
         .onAppear(perform: {
             if let user = session.session {
                 numberRelations = user.relationships.count
+                numberRequests = user.requests.count
+                numberPending = user.pending.count
             }
-//            numberRelations = session.session?.relationships?.count ?? 0
         })
         .onReceive(session.didChange) { (newSession) in
             if let newUser = newSession.session {
                 numberRelations = newUser.relationships.count
+                numberRequests = newUser.requests.count
+                numberPending = newUser.pending.count
             }
-//            numberRelations = newSession.session?.relationships?.count ?? 0
         }
     }
 }
