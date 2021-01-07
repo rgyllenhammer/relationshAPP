@@ -11,16 +11,15 @@ import Combine
 class User : ObservableObject {
     
     var uid: String
-    var email: String?
+    var email: String
     var displayName: String?
-    var userName: String?
-    var firstName: String?
-    var lastName: String?
+    var userName: String
+    var firstName: String
+    var lastName: String
     var relationships: NSDictionary
-    var lastConversation: String?
-    var fullName: String?
+    var fullName: String
     
-    init(uid: String, email: String?, displayName: String?, userName: String?, firstName: String?, lastName: String?, relationships: NSDictionary, lastConversation: String?) {
+    init(uid: String, email: String, displayName: String?, userName: String, firstName: String, lastName: String, relationships: NSDictionary) {
         self.uid = uid
         self.email = email
         self.displayName = displayName
@@ -28,7 +27,6 @@ class User : ObservableObject {
         self.firstName = firstName
         self.lastName = lastName
         self.relationships = relationships
-        self.lastConversation = lastConversation
-        self.fullName = "\(firstName ?? .loading) \(lastName ?? .loading)"
+        self.fullName = "\(firstName) \(lastName)"
     }
 }

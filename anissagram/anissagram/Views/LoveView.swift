@@ -16,7 +16,7 @@ struct LoveView: View {
     @State var numLove = 0
     @State var fullSize = true
     @State var show = false
-    @State var lastConversation = "Choose user"
+    @State var lastConversation = String.loading
     
     var body: some View {
         ZStack {
@@ -67,7 +67,6 @@ struct LoveView: View {
                             }).alert(isPresented: $showingAlert) {
                                 
                                 Alert(title: Text("Request Sent!"), message: Text("Succesfully sent \("anissa") an attention request!"), dismissButton: .default(Text("Got it!")))
-        //                        (session.session?.lastConversation) ?? "nil"
                             }
                         }
 
@@ -120,7 +119,10 @@ struct LoveView: View {
             }
             
         }.onAppear(perform: {
-            self.lastConversation = self.session.session?.lastConversation ?? "nil"
+            if let user = self.session.session {
+                self.lastConversation = user.userName
+            }
+//            self.lastConversation = self.session.session?.userName ?? "nil"
         })
         
     }

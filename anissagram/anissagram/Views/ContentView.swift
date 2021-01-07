@@ -72,8 +72,8 @@ struct ContentView: View {
     }
     
     func save() {
-        currentUserName = (self.session.session?.userName!)!
-        cachedDefaults.set(session.session?.userName!, forKey: "username")
+        currentUserName = session.session!.userName
+        cachedDefaults.set(session.session?.userName, forKey: "username")
     }
 }
 

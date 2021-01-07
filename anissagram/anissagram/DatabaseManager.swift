@@ -28,21 +28,21 @@ final class DatabaseManager {
         
         // setting inital data for user
         let userBody : NSDictionary = [
-            "first_name": user.firstName!,
-            "last_name": user.lastName!,
+            "first_name": user.firstName,
+            "last_name": user.lastName,
             "relationships": user.relationships
         ]
         
         // setting inital relationship as uuid of relationship pointing to self username
         let relationshipBody : NSDictionary = [
-                "users": [user.userName!, user.userName!],
+                "users": [user.userName, user.userName],
                 "data": "NONE"
         ]
         
         // setting inital data for user and first relationships
         let updates = [
-            "users/\(user.userName!)/" : userBody,
-            "relationships/\(user.relationships[user.userName!])" : relationshipBody
+            "users/\(user.userName)/" : userBody,
+            "relationships/\(user.relationships[user.userName])" : relationshipBody
 //            "relationships/\(user.relationships![user.userName!]!)" : relationshipBody
         ] as [String : Any]
         
@@ -50,7 +50,7 @@ final class DatabaseManager {
         database.updateChildValues(updates)
         
         // set current device fcm token
-        uploadDeviceToken(userName: user.userName!)
+        uploadDeviceToken(userName: user.userName)
     }
     
     public func uploadDeviceToken(userName: String){

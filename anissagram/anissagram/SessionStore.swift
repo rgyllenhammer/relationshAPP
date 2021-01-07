@@ -26,13 +26,12 @@ class SessionStore: ObservableObject {
             } else {
                 self.session = User(
                     uid: authResult!.user.uid,
-                    email: authResult!.user.email,
+                    email: authResult!.user.email!,
                     displayName: authResult!.user.displayName,
                     userName: userName,
                     firstName: firstName,
                     lastName: lastName,
-                    relationships: [userName: UUID().uuidString],
-                    lastConversation: userName
+                    relationships: [userName: UUID().uuidString]
                 )
                 
                 // insert user to firebase
@@ -69,17 +68,16 @@ class SessionStore: ObservableObject {
                     
                     self.session = User(
                         uid: authResult!.user.uid,
-                        email: authResult!.user.email,
+                        email: authResult!.user.email!,
                         displayName: authResult!.user.displayName,
                         userName: userName,
                         firstName: firstName,
                         lastName: lastName,
-                        relationships: relationships,
-                        lastConversation: userName
+                        relationships: relationships
                     )
                     
                     // update current fcm token in case logged in on new device
-                    DatabaseManager.shared.uploadDeviceToken(userName: self.session!.userName!)
+                    DatabaseManager.shared.uploadDeviceToken(userName: self.session!.userName)
                 }
             }
         })
@@ -103,8 +101,7 @@ class SessionStore: ObservableObject {
                 userName: userName,
                 firstName: firstName,
                 lastName: lastName,
-                relationships: relationships,
-                lastConversation: userName
+                relationships: relationships
             )
             
         }
