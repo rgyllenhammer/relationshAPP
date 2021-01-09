@@ -145,7 +145,13 @@ struct UserDisplays : View {
     }
     
     var body: some View {
-        Text(names.count == 0 ? "Nothing to display": "Hello")
+        if (names.count == 0) {
+            Text("Nothing to display")
+        } else {
+            ForEach(names, id: \.self) { name in
+                SearchResultItem(name: name).environmentObject(session)
+            }
+        }
     }
 }
 
