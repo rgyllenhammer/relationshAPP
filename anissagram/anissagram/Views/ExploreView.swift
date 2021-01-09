@@ -100,10 +100,8 @@ struct ExploreView: View {
                         Spacer()
                     }
                     
+                    UserDisplays(currentDisplay: currentlyDisplaying, session: session)
                     
-                    
-                    
-
                 }
                 SearchResults(userTerm: $userTerm, showingUsers: $showingUseers, names: names).environmentObject(session)
             }
@@ -136,7 +134,6 @@ struct UserDisplays : View {
     init(currentDisplay: String, session: SessionStore) {
         self.currentDisplay = currentDisplay
         
-            
         if (currentDisplay == .relations) {
             names = session.session?.relationships.allKeys as? [String] ?? []
         } else if (currentDisplay == .pending) {
@@ -148,7 +145,7 @@ struct UserDisplays : View {
     }
     
     var body: some View {
-        Text("Hello")
+        Text(names.count == 0 ? "Nothing to display": "Hello")
     }
 }
 
