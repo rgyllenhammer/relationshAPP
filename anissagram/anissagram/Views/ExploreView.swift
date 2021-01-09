@@ -17,6 +17,8 @@ struct ExploreView: View {
     @State var numberPending = 0
     @State var numberRequests = 0
     
+    @State var currentlyDisplaying : String = .relations
+    
     // ENVIRONMENT OBJECTS
     @EnvironmentObject var session : SessionStore
     
@@ -63,9 +65,31 @@ struct ExploreView: View {
                     }
                     .padding(.bottom)
                     HStack {
-                        NewGridItem(width: calculateWidth(pad: 10), color: .aRed, text: "Relations", numberToDisplay: numberRelations)
-                        NewGridItem(width: calculateWidth(pad: 10), color: .aOrange, text: "Pending", numberToDisplay: numberPending)
-                        NewGridItem(width: calculateWidth(pad: 10), color: .aYellow, text: "Requests", numberToDisplay: numberRequests)
+                        Button {
+//                            withAnimation {
+                                self.currentlyDisplaying = .relations
+//                            }
+                        } label: {
+                            NewGridItem(width: calculateWidth(pad: 10), color: .aRed, text: .relations, numberToDisplay: numberRelations, isDisplaying: $currentlyDisplaying)
+                        }
+                        
+                        Button {
+//                            withAnimation {
+                                self.currentlyDisplaying = .pending
+//                            }
+                        } label: {
+                            NewGridItem(width: calculateWidth(pad: 10), color: .aOrange, text: .pending, numberToDisplay: numberPending, isDisplaying: $currentlyDisplaying)
+                        }
+                        
+                        Button {
+//                            withAnimation {
+                                self.currentlyDisplaying = .requests
+//                            }
+
+                        } label: {
+                            NewGridItem(width: calculateWidth(pad: 10), color: .aYellow, text: .requests, numberToDisplay: numberRequests, isDisplaying: $currentlyDisplaying)
+                        }
+
                     }
                     .padding(.bottom)
 
@@ -97,20 +121,29 @@ struct NewGridItem : View {
     var color: Color
     var text: String
     var numberToDisplay: Int
+    
+    @Binding var isDisplaying : String
 
     var body: some View {
-        VStack {
+
+        VStack{
             VStack {
-                Text("\(numberToDisplay)")
-                    .font(.title)
-                    .fontWeight(.bold)
-                Text(text)
+                VStack {
+                    Text("\(numberToDisplay)")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    Text(text)
+                }
             }
+            .frame(width: width, height: width * 0.7, alignment: .center)
+            .background(color)
+            .cornerRadius(10.0)
+            .foregroundColor(.white)
+            
+            HorizontalLine(color: isDisplaying == text ? color : Color.clear, height: 2.0)
+            
+            
         }
-        .frame(width: width, height: width * 0.7, alignment: .center)
-        .background(color)
-        .cornerRadius(10.0)
-        .foregroundColor(.white)
 
     }
 }

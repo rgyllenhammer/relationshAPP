@@ -22,4 +22,9 @@ extension String {
     static let username = "ranchgod"
     static let firstname = "reese"
     static let lastname = "gyllenhammer"
+    
+    // values for explore page
+    static let relations = "Relations"
+    static let pending = "Pending"
+    static let requests = "Requests"
 }
