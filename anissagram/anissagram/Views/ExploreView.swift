@@ -92,6 +92,17 @@ struct ExploreView: View {
 
                     }
                     .padding(.bottom)
+                    
+                    HStack {
+                        Text(currentlyDisplaying)
+                            .font(.title2)
+                            .fontWeight(.bold)
+                        Spacer()
+                    }
+                    
+                    
+                    
+                    
 
                 }
                 SearchResults(userTerm: $userTerm, showingUsers: $showingUseers, names: names).environmentObject(session)
@@ -115,6 +126,32 @@ struct ExploreView: View {
         }
     }
 }
+
+struct UserDisplays : View {
+    
+    var currentDisplay : String
+    var names : [String]
+    @EnvironmentObject var session : SessionStore
+    
+    init(currentDisplay: String, session: SessionStore) {
+        self.currentDisplay = currentDisplay
+        
+            
+        if (currentDisplay == .relations) {
+            names = session.session?.relationships.allKeys as? [String] ?? []
+        } else if (currentDisplay == .pending) {
+            names = session.session?.pending.allKeys as? [String] ?? []
+        } else {
+            names = session.session?.requests.allKeys as? [String] ?? []
+        }
+        
+    }
+    
+    var body: some View {
+        Text("Hello")
+    }
+}
+
 
 struct NewGridItem : View {
     var width: CGFloat
