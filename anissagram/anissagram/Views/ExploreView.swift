@@ -284,6 +284,7 @@ struct SearchResultItem : View {
                             .foregroundColor(.gray)
                     }
 
+                // sent a request to name but they have ot replied
                 } else if (session.isPendingRelationship(with: name)) {
                     
                     Button {
@@ -293,6 +294,7 @@ struct SearchResultItem : View {
                             .foregroundColor(.gray)
                     }
                     
+                // name has sent us a request but we have not replied
                 } else if (session.isRequestedRelationship(from: name)) {
                     
                     Button {
@@ -310,8 +312,11 @@ struct SearchResultItem : View {
                     }
 
                     
-                } else { // not in any form of a relationship with name
+                // not in any form of a relationship with name
+                } else {
                     Button {
+                        
+//                        session.addRequest(with: name)
                         
                     } label: {
                         Text("Add")
