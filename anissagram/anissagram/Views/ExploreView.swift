@@ -272,17 +272,65 @@ struct SearchResultItem : View {
             }
             .padding(.top)
             
-            Button(action: {
-                if (!(session.isInRelationship(with: name) || toggled )) {
-                    session.addRequest(with: name)
+            // buttons decided based on relationship to user
+            HStack{
+                // currently in relationship
+                if (session.isInRelationship(with: name)) {
+                    
+                    Button {
+                        
+                    } label: {
+                        Text("Delete")
+                            .foregroundColor(.gray)
+                    }
+
+                } else if (session.isPendingRelationship(with: name)) {
+                    
+                    Button {
+                        
+                    } label: {
+                        Text("Unsend")
+                            .foregroundColor(.gray)
+                    }
+                    
+                } else if (session.isRequestedRelationship(from: name)) {
+                    
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "checkmark")
+                            .foregroundColor(.aRed)
+                    }
+                    
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "xmark")
+                            .foregroundColor(.aYellow)
+                    }
+
+                    
+                } else { // not in any form of a relationship with name
+                    Button {
+                        
+                    } label: {
+                        Text("Add")
+                            .foregroundColor(.aRed)
+                    }
                 }
                 
-                self.toggled = true
-            }, label: {
-                Text(session.isInRelationship(with: name) || toggled ? "Connected" : "Add")
-            })
-            .foregroundColor(session.isInRelationship(with: name) || toggled ? .gray : .aRed)
-            .padding(.trailing)
+            }
+//            Button(action: {
+//                if (!(session.isInRelationship(with: name) || toggled )) {
+//                    session.addRequest(with: name)
+//                }
+//
+//                self.toggled = true
+//            }, label: {
+//                Text(session.isInRelationship(with: name) || toggled ? "Connected" : "Add")
+//            })
+//            .foregroundColor(session.isInRelationship(with: name) || toggled ? .gray : .aRed)
+//            .padding(.trailing)
         }
     }
 }

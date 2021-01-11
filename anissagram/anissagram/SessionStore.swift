@@ -140,6 +140,14 @@ class SessionStore: ObservableObject {
         return self.session?.relationships[name] != nil
     }
     
+    func isPendingRelationship(with name: String) -> Bool {
+        return self.session?.pending[name] != nil
+    }
+    
+    func isRequestedRelationship(from name: String) -> Bool {
+        return self.session?.requests[name] != nil
+    }
+    
     func addRelationShip(with name: String) {
         let newUUID = UUID().uuidString
         if let user = self.session {
