@@ -146,7 +146,14 @@ struct UserDisplays : View {
     
     var body: some View {
         if (names.count == 0) {
-            Text("Nothing to display")
+            VStack {
+                Image(systemName: "magnifyingglass")
+                    .resizable()
+                    .frame(width: 100, height: 100, alignment: .center)
+                Text("Nothing to display")
+            }
+            .foregroundColor(.gray)
+            .padding(.top)
         } else {
             ForEach(names, id: \.self) { name in
                 SearchResultItem(name: name).environmentObject(session)
@@ -272,7 +279,7 @@ struct SearchResultItem : View {
                 
                 self.toggled = true
             }, label: {
-                Text(session.isInRelationship(with: name) || toggled ? "Pending" : "Add")
+                Text(session.isInRelationship(with: name) || toggled ? "Connected" : "Add")
             })
             .foregroundColor(session.isInRelationship(with: name) || toggled ? .gray : .aRed)
             .padding(.trailing)
