@@ -152,5 +152,3 @@ extension AppDelegate : MessagingDelegate {
   }
   // [END refresh_token]
 }
-
-

@@ -33,10 +33,18 @@ struct ExploreView: View {
             ZStack {
                 ScrollView {
                         HStack{
+
                             Text(session.session?.userName ?? .loading)
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
+                            
                             Spacer()
+                            
+                            Button(action: {session.signOut()}, label: {
+                                Text("Sign Out")
+                                    .padding(0)
+                            })
+                            
                         }.padding(.top)
 
                     HStack{

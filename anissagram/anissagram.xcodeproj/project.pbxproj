@@ -19,6 +19,8 @@
 		8C966E0D25A42725006CA694 /* TestDataObjectChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C966E0C25A42725006CA694 /* TestDataObjectChange.swift */; };
 		8C966E1025A42753006CA694 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C966E0F25A42753006CA694 /* TestView.swift */; };
 		8C966E1325A9686A006CA694 /* HorizontalLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C966E1225A9686A006CA694 /* HorizontalLineView.swift */; };
+		8C966E1625AED256006CA694 /* PopListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C966E1525AED256006CA694 /* PopListView.swift */; };
+		8C966E2725AEDFAD006CA694 /* PopRelationshipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C966E2625AEDFAD006CA694 /* PopRelationshipsView.swift */; };
 		8CC5143C259334AB00187754 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC5143B259334AB00187754 /* SessionStore.swift */; };
 		8CC5143F2593387D00187754 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC5143E2593387D00187754 /* LoginView.swift */; };
 		8CC51442259473F200187754 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51441259473F200187754 /* DatabaseManager.swift */; };
@@ -46,6 +48,8 @@
 		8C966E0C25A42725006CA694 /* TestDataObjectChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataObjectChange.swift; sourceTree = "<group>"; };
 		8C966E0F25A42753006CA694 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		8C966E1225A9686A006CA694 /* HorizontalLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLineView.swift; sourceTree = "<group>"; };
+		8C966E1525AED256006CA694 /* PopListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopListView.swift; sourceTree = "<group>"; };
+		8C966E2625AEDFAD006CA694 /* PopRelationshipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopRelationshipsView.swift; sourceTree = "<group>"; };
 		8CC5143B259334AB00187754 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		8CC5143E2593387D00187754 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8CC51441259473F200187754 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -99,13 +103,11 @@
 		8C024710256E3F8800F859F6 /* anissagram */ = {
 			isa = PBXGroup;
 			children = (
+				8C966E2425AED923006CA694 /* ViewModels */,
 				8CC5144525948A6400187754 /* Models */,
 				8CC5142825932DA900187754 /* Views */,
 				8C024711256E3F8800F859F6 /* anissagramApp.swift */,
-				8CC51441259473F200187754 /* DatabaseManager.swift */,
 				8CE7A3F9257D9DF300147C48 /* AppDelegate.swift */,
-				8CC5143B259334AB00187754 /* SessionStore.swift */,
-				8C966E0C25A42725006CA694 /* TestDataObjectChange.swift */,
 				8C024715256E3F8A00F859F6 /* Assets.xcassets */,
 				8C02471A256E3F8A00F859F6 /* Info.plist */,
 				8CE7A3E7257D9C7800147C48 /* GoogleService-Info.plist */,
@@ -123,18 +125,70 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		8CC5142825932DA900187754 /* Views */ = {
+		8C966E1E25AED742006CA694 /* LoginViews */ = {
+			isa = PBXGroup;
+			children = (
+				8CC5143E2593387D00187754 /* LoginView.swift */,
+			);
+			path = LoginViews;
+			sourceTree = "<group>";
+		};
+		8C966E1F25AED76D006CA694 /* MainViews */ = {
 			isa = PBXGroup;
 			children = (
 				8C024713256E3F8800F859F6 /* ContentView.swift */,
 				8C024732257066D600F859F6 /* FoodView.swift */,
 				8C024721256E3FB400F859F6 /* ProfileView.swift */,
 				8C024729256E3FEF00F859F6 /* LoveView.swift */,
-				8C02472D256E473E00F859F6 /* InfoView.swift */,
-				8CC5143E2593387D00187754 /* LoginView.swift */,
 				8CC514502599B7E200187754 /* ExploreView.swift */,
-				8C966E0F25A42753006CA694 /* TestView.swift */,
+			);
+			path = MainViews;
+			sourceTree = "<group>";
+		};
+		8C966E2025AED7D3006CA694 /* SearchViews */ = {
+			isa = PBXGroup;
+			children = (
+				8C966E1525AED256006CA694 /* PopListView.swift */,
+				8C966E2625AEDFAD006CA694 /* PopRelationshipsView.swift */,
+			);
+			path = SearchViews;
+			sourceTree = "<group>";
+		};
+		8C966E2125AED865006CA694 /* HelperViews */ = {
+			isa = PBXGroup;
+			children = (
 				8C966E1225A9686A006CA694 /* HorizontalLineView.swift */,
+			);
+			path = HelperViews;
+			sourceTree = "<group>";
+		};
+		8C966E2225AED870006CA694 /* TestViews */ = {
+			isa = PBXGroup;
+			children = (
+				8C02472D256E473E00F859F6 /* InfoView.swift */,
+				8C966E0F25A42753006CA694 /* TestView.swift */,
+				8C966E0C25A42725006CA694 /* TestDataObjectChange.swift */,
+			);
+			path = TestViews;
+			sourceTree = "<group>";
+		};
+		8C966E2425AED923006CA694 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8CC51441259473F200187754 /* DatabaseManager.swift */,
+				8CC5143B259334AB00187754 /* SessionStore.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8CC5142825932DA900187754 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8C966E2225AED870006CA694 /* TestViews */,
+				8C966E2125AED865006CA694 /* HelperViews */,
+				8C966E2025AED7D3006CA694 /* SearchViews */,
+				8C966E1F25AED76D006CA694 /* MainViews */,
+				8C966E1E25AED742006CA694 /* LoginViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -272,6 +326,7 @@
 			files = (
 				8C966E1325A9686A006CA694 /* HorizontalLineView.swift in Sources */,
 				8C966E0D25A42725006CA694 /* TestDataObjectChange.swift in Sources */,
+				8C966E2725AEDFAD006CA694 /* PopRelationshipsView.swift in Sources */,
 				8CE7A3FA257D9DF300147C48 /* AppDelegate.swift in Sources */,
 				8CC51442259473F200187754 /* DatabaseManager.swift in Sources */,
 				8C024714256E3F8800F859F6 /* ContentView.swift in Sources */,
@@ -281,6 +336,7 @@
 				8C024712256E3F8800F859F6 /* anissagramApp.swift in Sources */,
 				8CC5143C259334AB00187754 /* SessionStore.swift in Sources */,
 				8C02472E256E473E00F859F6 /* InfoView.swift in Sources */,
+				8C966E1625AED256006CA694 /* PopListView.swift in Sources */,
 				8C02472A256E3FEF00F859F6 /* LoveView.swift in Sources */,
 				8CC5143F2593387D00187754 /* LoginView.swift in Sources */,
 				8C3FF52E2570B5B200288B7E /* User.swift in Sources */,

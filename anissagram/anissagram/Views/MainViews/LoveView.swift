@@ -101,32 +101,13 @@ struct LoveView: View {
             
             // pops up the reader to display users to choose
             if self.show {
-                GeometryReader{ geometry in
-                    VStack {
-                        VStack {
-                            PoplistView(userNames: createUserNames(relationships: self.session.session?.relationships), lastConversation: $lastConversation, show: $show)
-                            Button(action: {
-                                self.show.toggle()
-                            }, label: {
-                                Image(systemName: "xmark")
-                                    .resizable()
-                                    .foregroundColor(Color.black)
-                                    .frame(width: 15, height: 15, alignment: .center)
-                                    .padding(20)
-                            })
-                            .background(Color.white)
-                            .clipShape(Circle())
-                        }
-                    }
-                    .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
-                }.background(Color.black.opacity(0.5).edgesIgnoringSafeArea(.all))
+                PopRelationshipsView(lastConversation: $lastConversation, show: $show).environmentObject(session)
             }
             
         }.onAppear(perform: {
             if let user = self.session.session {
                 self.lastConversation = user.userName
             }
-//            self.lastConversation = self.session.session?.userName ?? "nil"
         })
         
     }
@@ -135,49 +116,6 @@ struct LoveView: View {
         return relationships?.allKeys as? [String] ?? Array(repeating: "nil", count: 25)
     }
     
-}
-
-struct PoplistView: View {
-    
-    var userNames : [String]
-    @Binding var lastConversation : String
-    @Binding var show : Bool
-    
-    var body : some View {
-        
-        
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack {
-                HStack {
-                    Text("Relationships:").font(.title).fontWeight(.bold)
-                    Spacer()
-                }
-                ForEach(userNames, id: \.self) { name in
-                    ZStack(alignment: .trailing) {
-                        HStack {
-                            Image("anissagram").resizable()
-                                .frame(width: 55, height: 55)
-                                .clipShape(Circle())
-                            VStack(alignment: .leading) {
-                                Text("@\(name)").fontWeight(.semibold)
-                                Text("Choose Relationship")
-                                Divider()
-                            }
-                            .padding(.top)
-
-                        }.onTapGesture {
-                            lastConversation = name
-                            show.toggle()
-                        }
-                        Image(systemName: "arrow.right").foregroundColor(.gray)
-                    }
-                }
-            }
-            .padding()
-        }
-        .background(Color.white)
-        .frame(width: UIScreen.main.bounds.width - 60, height: UIScreen.main.bounds.height - 250 , alignment: .center)
-    }
 }
 
 struct LoveView_Previews: PreviewProvider {
