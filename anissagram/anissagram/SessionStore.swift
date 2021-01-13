@@ -159,17 +159,59 @@ class SessionStore: ObservableObject {
         }
     }
     
-    func addRequest(with name: String) {
+    func deleteRelationShip(with name: String) {
+        if let user = self.session {
+            
+            user.relationships.removeObject(forKey: name)
+            
+            self.updateSession()
+        }
+    }
+    
+    func addPending(with name: String) {
         let newUUID = UUID().uuidString
         if let user = self.session {
             // CALL TO DBMS FOR ADDING PENDING TO OURS AND REQUEST TO ANOTHER
-            DatabaseManager.shared.addRequest(userName: user.userName, relationshipUser: name, relationshipUUID: newUUID)
+//            DatabaseManager.shared.addPending(userName: user.userName, relationshipUser: name, relationshipUUID: newUUID)
             
             user.pending[name] = newUUID
             
             self.updateSession()
             
         }
+    }
+    
+    func deletePending(with name: String) {
+        if let user = self.session {
+            // CALL TO DBMS FOR DELETING OUR PENDING AND THEIR REQUEST
+            
+            user.pending.removeObject(forKey: name)
+            
+            self.updateSession()
+            
+        }
+    }
+    
+    
+    func acceptRequest(from name: String) {
+        let newUUID = UUID().uuidString
+        if let user = self.session {
+            
+            user.requests.removeObject(forKey: name)
+            user.relationships[name] = newUUID
+        }
+        
+        self.updateSession()
+    }
+    
+    func declineRequest(from name: String) {
+        if let user = self.session {
+            // CALL TO DBMS FOR REMOVING THIS USER REQUEST AND OTHER USER PENDING MAKE SURE TO DO NOTHING IF NULL VALUE
+            
+            user.requests.removeObject(forKey: name)
+        }
+        
+        self.updateSession()
     }
     
     

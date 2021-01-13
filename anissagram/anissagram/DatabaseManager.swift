@@ -94,7 +94,7 @@ final class DatabaseManager {
         database.updateChildValues(updates)
     }
     
-    public func addRequest(userName: String, relationshipUser: String, relationshipUUID: String) {
+    public func addPending(userName: String, relationshipUser: String, relationshipUUID: String) {
         let updates = [
             "users/\(userName)/pending/\(relationshipUser)": relationshipUUID,
             "users/\(relationshipUser)/requests/\(userName)": relationshipUUID

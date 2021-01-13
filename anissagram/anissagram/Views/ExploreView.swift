@@ -278,34 +278,37 @@ struct SearchResultItem : View {
                 if (session.isInRelationship(with: name)) {
                     
                     Button {
-                        
+                        session.deleteRelationShip(with: name)
                     } label: {
                         Text("Delete")
                             .foregroundColor(.gray)
                     }
 
                 // sent a request to name but they have ot replied
+                // perhaps there is an optimization here as this is the exact OPPOSITE if we have never sent a relationship
                 } else if (session.isPendingRelationship(with: name)) {
                     
                     Button {
-                        
+                        session.deletePending(with: name)
                     } label: {
-                        Text("Unsend")
-                            .foregroundColor(.gray)
+                        VStack{
+                            Text("Unsend").foregroundColor(.gray)
+                        }
                     }
                     
                 // name has sent us a request but we have not replied
                 } else if (session.isRequestedRelationship(from: name)) {
                     
                     Button {
-                        
+                        // should be the same as addRelationship
+                        session.acceptRequest(from: name)
                     } label: {
                         Image(systemName: "checkmark")
                             .foregroundColor(.aRed)
                     }
                     
                     Button {
-                        
+                        session.declineRequest(from: name)
                     } label: {
                         Image(systemName: "xmark")
                             .foregroundColor(.aYellow)
@@ -315,27 +318,22 @@ struct SearchResultItem : View {
                 // not in any form of a relationship with name
                 } else {
                     Button {
+                        if (toggled) {
+                            session.deletePending(with: name)
+                        } else {
+                            session.addPending(with: name)
+                        }
                         
-//                        session.addRequest(with: name)
+                        toggled.toggle()
                         
                     } label: {
-                        Text("Add")
-                            .foregroundColor(.aRed)
+                        VStack{
+                            toggled ? Text("Unsend").foregroundColor(.gray) : Text("Add").foregroundColor(.aRed)
+                        }
                     }
                 }
                 
             }
-//            Button(action: {
-//                if (!(session.isInRelationship(with: name) || toggled )) {
-//                    session.addRequest(with: name)
-//                }
-//
-//                self.toggled = true
-//            }, label: {
-//                Text(session.isInRelationship(with: name) || toggled ? "Connected" : "Add")
-//            })
-//            .foregroundColor(session.isInRelationship(with: name) || toggled ? .gray : .aRed)
-//            .padding(.trailing)
         }
     }
 }
