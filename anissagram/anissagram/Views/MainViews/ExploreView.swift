@@ -154,14 +154,7 @@ struct UserDisplays : View {
     
     var body: some View {
         if (names.count == 0) {
-            VStack {
-                Image(systemName: "magnifyingglass")
-                    .resizable()
-                    .frame(width: 100, height: 100, alignment: .center)
-                Text("Nothing to display")
-            }
-            .foregroundColor(.gray)
-            .padding(.top)
+            NothingToDisplayView()
         } else {
             ForEach(names, id: \.self) { name in
                 SearchResultItem(name: name).environmentObject(session)

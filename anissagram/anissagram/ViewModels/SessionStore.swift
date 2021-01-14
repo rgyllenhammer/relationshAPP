@@ -15,6 +15,7 @@ class SessionStore: ObservableObject {
     
     @Published var didChange = PassthroughSubject<SessionStore, Never>()
     @Published var session: User? { didSet { self.didChange.send(self) }}
+    @Published var fetchedRelationships : NSMutableDictionary = [:]
     
 
     func signUp(email: String, password: String, userName: String, firstName: String, lastName: String) {

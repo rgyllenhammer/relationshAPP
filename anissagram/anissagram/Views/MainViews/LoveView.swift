@@ -23,22 +23,9 @@ struct LoveView: View {
             NavigationView {
                 GeometryReader { geometry in
                     VStack{
-                        VStack{
-                            HStack{
-                                Text("Request attention!").font(.largeTitle).fontWeight(.bold)
-                                Spacer()
-                            }
-                            HStack{
-                                Text("From")
-                                Text("@\(lastConversation)").foregroundColor(.aYellow)
-                                    .foregroundColor(.aYellow)
-                                    .onTapGesture {
-                                        self.show.toggle()
-                                    }
-                                Spacer()
-                            }.font(.title3)
-                        }
-                        .padding(.bottom)
+                        PageTitleView(title: "Request attention!")
+                        RelationshipPickerHeader(show: $show, lastConversation: $lastConversation, descriptor: "From")
+                        
                         HStack{
                             HStack{
                                 Text("Level:")

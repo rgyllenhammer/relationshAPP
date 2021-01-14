@@ -21,6 +21,11 @@
 		8C966E1325A9686A006CA694 /* HorizontalLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C966E1225A9686A006CA694 /* HorizontalLineView.swift */; };
 		8C966E1625AED256006CA694 /* PopListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C966E1525AED256006CA694 /* PopListView.swift */; };
 		8C966E2725AEDFAD006CA694 /* PopRelationshipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C966E2625AEDFAD006CA694 /* PopRelationshipsView.swift */; };
+		8C966E2A25B0FA63006CA694 /* NothingToDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C966E2925B0FA63006CA694 /* NothingToDisplayView.swift */; };
+		8C966E2E25B0FBBB006CA694 /* ProfileTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C966E2D25B0FBBB006CA694 /* ProfileTextView.swift */; };
+		8C966E3225B0FC36006CA694 /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C966E3125B0FC36006CA694 /* ProfileImageView.swift */; };
+		8C966E3525B101C8006CA694 /* RelationshipPickerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C966E3425B101C8006CA694 /* RelationshipPickerHeader.swift */; };
+		8C966E3825B10261006CA694 /* PageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C966E3725B10261006CA694 /* PageTitleView.swift */; };
 		8CC5143C259334AB00187754 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC5143B259334AB00187754 /* SessionStore.swift */; };
 		8CC5143F2593387D00187754 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC5143E2593387D00187754 /* LoginView.swift */; };
 		8CC51442259473F200187754 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC51441259473F200187754 /* DatabaseManager.swift */; };
@@ -50,6 +55,11 @@
 		8C966E1225A9686A006CA694 /* HorizontalLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLineView.swift; sourceTree = "<group>"; };
 		8C966E1525AED256006CA694 /* PopListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopListView.swift; sourceTree = "<group>"; };
 		8C966E2625AEDFAD006CA694 /* PopRelationshipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopRelationshipsView.swift; sourceTree = "<group>"; };
+		8C966E2925B0FA63006CA694 /* NothingToDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NothingToDisplayView.swift; sourceTree = "<group>"; };
+		8C966E2D25B0FBBB006CA694 /* ProfileTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTextView.swift; sourceTree = "<group>"; };
+		8C966E3125B0FC36006CA694 /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		8C966E3425B101C8006CA694 /* RelationshipPickerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelationshipPickerHeader.swift; sourceTree = "<group>"; };
+		8C966E3725B10261006CA694 /* PageTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTitleView.swift; sourceTree = "<group>"; };
 		8CC5143B259334AB00187754 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		8CC5143E2593387D00187754 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8CC51441259473F200187754 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
@@ -158,6 +168,11 @@
 			isa = PBXGroup;
 			children = (
 				8C966E1225A9686A006CA694 /* HorizontalLineView.swift */,
+				8C966E2925B0FA63006CA694 /* NothingToDisplayView.swift */,
+				8C966E2D25B0FBBB006CA694 /* ProfileTextView.swift */,
+				8C966E3125B0FC36006CA694 /* ProfileImageView.swift */,
+				8C966E3425B101C8006CA694 /* RelationshipPickerHeader.swift */,
+				8C966E3725B10261006CA694 /* PageTitleView.swift */,
 			);
 			path = HelperViews;
 			sourceTree = "<group>";
@@ -326,7 +341,9 @@
 			files = (
 				8C966E1325A9686A006CA694 /* HorizontalLineView.swift in Sources */,
 				8C966E0D25A42725006CA694 /* TestDataObjectChange.swift in Sources */,
+				8C966E3525B101C8006CA694 /* RelationshipPickerHeader.swift in Sources */,
 				8C966E2725AEDFAD006CA694 /* PopRelationshipsView.swift in Sources */,
+				8C966E2A25B0FA63006CA694 /* NothingToDisplayView.swift in Sources */,
 				8CE7A3FA257D9DF300147C48 /* AppDelegate.swift in Sources */,
 				8CC51442259473F200187754 /* DatabaseManager.swift in Sources */,
 				8C024714256E3F8800F859F6 /* ContentView.swift in Sources */,
@@ -336,9 +353,12 @@
 				8C024712256E3F8800F859F6 /* anissagramApp.swift in Sources */,
 				8CC5143C259334AB00187754 /* SessionStore.swift in Sources */,
 				8C02472E256E473E00F859F6 /* InfoView.swift in Sources */,
+				8C966E2E25B0FBBB006CA694 /* ProfileTextView.swift in Sources */,
 				8C966E1625AED256006CA694 /* PopListView.swift in Sources */,
+				8C966E3225B0FC36006CA694 /* ProfileImageView.swift in Sources */,
 				8C02472A256E3FEF00F859F6 /* LoveView.swift in Sources */,
 				8CC5143F2593387D00187754 /* LoginView.swift in Sources */,
+				8C966E3825B10261006CA694 /* PageTitleView.swift in Sources */,
 				8C3FF52E2570B5B200288B7E /* User.swift in Sources */,
 				8CC514512599B7E200187754 /* ExploreView.swift in Sources */,
 				8CC514482595FDB300187754 /* Constants.swift in Sources */,
