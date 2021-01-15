@@ -38,7 +38,7 @@ struct EditProfileView: View {
                 if lastType == "text" {
 
                     HStack {
-                        Text("Post text").font(.title2).fontWeight(.bold)
+                        Text("Post text").font(.title2).fontWeight(.semibold)
                         Spacer()
                     }.padding(.top)
                     HStack {
@@ -46,7 +46,7 @@ struct EditProfileView: View {
                             .padding()
                             .frame(width: 300, height: 200, alignment: .top)
                             .background(Color(.systemGray6))
-                            .cornerRadius(20)
+                            .cornerRadius(5)
                         Spacer()
                     }
                         
