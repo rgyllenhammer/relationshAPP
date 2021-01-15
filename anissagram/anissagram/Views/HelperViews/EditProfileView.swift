@@ -15,6 +15,8 @@ struct EditProfileView: View {
     @State var lastType = "text"
     var types : [String] = ["text", "image"]
     
+    @State var textInput = ""
+    
     var body: some View {
         ZStack {
             VStack {
@@ -33,16 +35,43 @@ struct EditProfileView: View {
                 PageTitleView(title: "Add post!")
                 RelationshipPickerHeader(show: $showPopup, lastConversation: $lastType, descriptor: "Of type")
                 
-                Button {
-                    if lastType == "text" {
-                        self.blocks.append(["id":UUID().uuidString, "type":"text", "value":"I hope you know how much I love you and all of that you are my absolute favorite person in the world and I would do anything to love you fore thank you so much for everything my darling"])
-                    } else {
-                        self.blocks.append(["id":UUID().uuidString, "type":"image", "value":"November 27 - full of love"])
+                if lastType == "text" {
+
+                    HStack {
+                        Text("Post text").font(.title2).fontWeight(.bold)
+                        Spacer()
+                    }.padding(.top)
+                    HStack {
+                        TextField("Type here ...", text: $textInput)
+                            .padding()
+                            .frame(width: 300, height: 200, alignment: .top)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(20)
+                        Spacer()
                     }
-                    self.showing.toggle()
+                        
+   
+                } else {
                     
-                } label: {
-                    Text("Add post")
+                    
+                    
+                    
+                    
+                }
+                HStack {
+                    
+                    Button {
+                        if lastType == "text" {
+                            self.blocks.append(["id":UUID().uuidString, "type":"text", "value":textInput])
+                        } else {
+                            self.blocks.append(["id":UUID().uuidString, "type":"image", "value":"November 27 - full of love"])
+                        }
+                        self.showing.toggle()
+                        
+                    } label: {
+                        Text("Add post")
+                    }
+                    Spacer()
                 }
 
                 
