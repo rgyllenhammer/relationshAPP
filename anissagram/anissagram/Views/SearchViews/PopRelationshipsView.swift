@@ -8,20 +8,17 @@
 import SwiftUI
 
 struct PopRelationshipsView: View {
-    @EnvironmentObject var session : SessionStore
-    @Binding var lastConversation : String
+//    @EnvironmentObject var session : SessionStore
+    @Binding var lastPick : String
     @Binding var show : Bool
-    
-    func createUserNames(relationships: NSDictionary?) -> [String]{
-        return relationships?.allKeys as? [String] ?? Array(repeating: "nil", count: 25)
-    }
+    var userNames : [String]
     
     var body: some View {
         
         GeometryReader{ geometry in
             VStack {
                 VStack {
-                    PoplistView(userNames: createUserNames(relationships: session.session?.relationships), lastConversation: $lastConversation, show: $show)
+                    PoplistView(userNames: userNames, lastPick: $lastPick, show: $show)
                     Button(action: {
                         self.show.toggle()
                     }, label: {

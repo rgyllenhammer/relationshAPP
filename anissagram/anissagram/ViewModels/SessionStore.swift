@@ -17,6 +17,14 @@ class SessionStore: ObservableObject {
     @Published var session: User? { didSet { self.didChange.send(self) }}
     @Published var fetchedRelationships : NSMutableDictionary = [:]
     
+    func createUserNames() -> [String] {
+        if let user = self.session {
+            return user.relationships.allKeys as! [String]
+        }
+        
+        return Array(repeating: String.loading, count: 25)
+    }
+    
 
     func signUp(email: String, password: String, userName: String, firstName: String, lastName: String) {
         print("sign up new user")

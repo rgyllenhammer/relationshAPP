@@ -10,7 +10,7 @@ import SwiftUI
 struct PoplistView: View {
     
     var userNames : [String]
-    @Binding var lastConversation : String
+    @Binding var lastPick : String
     @Binding var show : Bool
     
     var body : some View {
@@ -35,7 +35,7 @@ struct PoplistView: View {
                             .padding(.top)
 
                         }.onTapGesture {
-                            lastConversation = name
+                            lastPick = name
                             show.toggle()
                         }
                         Image(systemName: "arrow.right").foregroundColor(.gray)

@@ -88,7 +88,7 @@ struct LoveView: View {
             
             // pops up the reader to display users to choose
             if self.show {
-                PopRelationshipsView(lastConversation: $lastConversation, show: $show).environmentObject(session)
+                PopRelationshipsView(lastPick: $lastConversation, show: $show, userNames: session.createUserNames())
             }
             
         }.onAppear(perform: {

@@ -12,9 +12,11 @@ struct ProfileView: View {
     @State var show = false
     @State var lastConversation = String.loading
     
-    func createUserNames(relationships: NSDictionary?) -> [String]{
-        return relationships?.allKeys as? [String] ?? Array(repeating: "nil", count: 25)
-    }
+    @State var editing = false
+    @State var blocks : [[String:String]] = [
+        ["id": UUID().uuidString, "type": "text", "value": "I hope you know how much I love you and all of that you are my absolute favorite person in the world and I would do anything to love you fore thank you so much for everything my darling"],
+        ["id" : UUID().uuidString, "type": "image", "value": "December 7th, when we fell in lov"],
+    ]
     
     var body: some View {
         
@@ -24,23 +26,28 @@ struct ProfileView: View {
                     HStack {
                         PageTitleView(title: "Photos for you!")
                         Spacer()
-                        NavigationLink(destination:
-                                        VStack {
-                                            Text("HELLO")
-                                            Spacer()
-                                        }
-                                       , label: {
+                        NavigationLink(destination: EditProfileView(blocks: $blocks, showing: $editing),
+                                       isActive: $editing,
+                                       label: {
                                             Text("Edit")
-                                        })
+                                       })
                     }
                     
                     RelationshipPickerHeader(show: $show, lastConversation: $lastConversation, descriptor: "With")
                     
-                    ProfileTextView(textToDisplay: "I hope you know how much I love you and all of that you are my absolute favorite person in the world and I would do anything to love you fore thank you so much for everything my darling")
+                    ForEach(blocks, id: \.self["id"]) { block in
+                        if block["type"] == "text" {
+                            ProfileTextView(textToDisplay: block["value"]!)
+                        } else {
+                            ProfileImageView(captionText: block["value"]!)
+                        }
+                    }
                     
-                    ProfileImageView(captionText: "December 7 - Our first kiss")
-                    
-                    ProfileTextView(textToDisplay: "Now I want you to know how awesome it is that we have had the opprotunit to be with the same area that we were previoyusly being around with our frien and all fo that")
+//                    ProfileTextView(textToDisplay: "I hope you know how much I love you and all of that you are my absolute favorite person in the world and I would do anything to love you fore thank you so much for everything my darling")
+//
+//                    ProfileImageView(captionText: "December 7 - Our first kiss")
+//
+//                    ProfileTextView(textToDisplay: "Now I want you to know how awesome it is that we have had the opprotunit to be with the same area that we were previoyusly being around with our frien and all fo that")
 
                     
                 }.padding()
@@ -48,7 +55,7 @@ struct ProfileView: View {
             
             // pops up the reader to display users to choose
             if self.show {
-                PopRelationshipsView(lastConversation: $lastConversation, show: $show).environmentObject(session)
+                PopRelationshipsView(lastPick: $lastConversation, show: $show, userNames: session.createUserNames())
             }
             
         }.onAppear(perform: {
