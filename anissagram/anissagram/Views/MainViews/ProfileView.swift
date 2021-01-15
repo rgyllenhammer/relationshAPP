@@ -21,7 +21,19 @@ struct ProfileView: View {
         ZStack {
             ScrollView {
                 LazyVStack {
-                    PageTitleView(title: "Photos for you!")
+                    HStack {
+                        PageTitleView(title: "Photos for you!")
+                        Spacer()
+                        NavigationLink(destination:
+                                        VStack {
+                                            Text("HELLO")
+                                            Spacer()
+                                        }
+                                       , label: {
+                                            Text("Edit")
+                                        })
+                    }
+                    
                     RelationshipPickerHeader(show: $show, lastConversation: $lastConversation, descriptor: "With")
                     
                     ProfileTextView(textToDisplay: "I hope you know how much I love you and all of that you are my absolute favorite person in the world and I would do anything to love you fore thank you so much for everything my darling")
@@ -29,6 +41,7 @@ struct ProfileView: View {
                     ProfileImageView(captionText: "December 7 - Our first kiss")
                     
                     ProfileTextView(textToDisplay: "Now I want you to know how awesome it is that we have had the opprotunit to be with the same area that we were previoyusly being around with our frien and all fo that")
+
                     
                 }.padding()
             }

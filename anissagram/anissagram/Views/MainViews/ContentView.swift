@@ -41,7 +41,11 @@ struct ContentView: View {
                             Image(systemName: "car")
                             Text("Food")
                         }
-                    ProfileView().environmentObject(session)
+                    NavigationView {
+                        ProfileView().environmentObject(session)
+                            .navigationBarTitle("")
+                            .navigationBarHidden(true)
+                    }
                         .tabItem {
                             Image(systemName: "figure.wave")
                             Text("Mems")
