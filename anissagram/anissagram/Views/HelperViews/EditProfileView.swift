@@ -32,19 +32,20 @@ struct EditProfileView: View {
                     Spacer()
                 }.padding(.bottom)
 
-                PageTitleView(title: "Add post!")
+                PageTitleView(title: "Add memory here!")
                 RelationshipPickerHeader(show: $showPopup, lastConversation: $lastType, descriptor: "Of type")
                 
                 if lastType == "text" {
 
                     HStack {
-                        Text("Post text").font(.title2).fontWeight(.semibold)
+                        Text("Details").font(.title2).fontWeight(.semibold)
                         Spacer()
                     }.padding(.top)
                     HStack {
-                        TextField("Type here ...", text: $textInput)
+                        TextField("Post text here ...", text: $textInput)
                             .padding()
-                            .frame(width: 300, height: 200, alignment: .top)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 200, alignment: .topLeading)
+//                            .frame(width: UIScreen.main.bounds.width - 30, height: 200, alignment: .top)
                             .background(Color(.systemGray6))
                             .cornerRadius(5)
                         Spacer()
@@ -69,7 +70,7 @@ struct EditProfileView: View {
                         self.showing.toggle()
                         
                     } label: {
-                        Text("Add post")
+                        Text("Add post").font(.title3)
                     }
                     Spacer()
                 }

@@ -39,11 +39,13 @@ struct ExploreView: View {
                                 .fontWeight(.bold)
                             
                             Spacer()
+                    
                             
                             Button(action: {session.signOut()}, label: {
-                                Text("Sign Out")
+                                Image(systemName: "gearshape").foregroundColor(.aRed)
                                     .padding(0)
                             })
+                            
                             
                         }.padding(.top)
 

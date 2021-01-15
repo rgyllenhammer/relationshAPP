@@ -24,12 +24,12 @@ struct ProfileView: View {
             ScrollView {
                 LazyVStack {
                     HStack {
-                        PageTitleView(title: "Photos for you!")
+                        PageTitleView(title: "Memories for you!")
                         Spacer()
                         NavigationLink(destination: EditProfileView(blocks: $blocks, showing: $editing),
                                        isActive: $editing,
                                        label: {
-                                            Text("Edit")
+                                        Image(systemName: "plus").foregroundColor(.aRed)
                                        })
                     }
                     
