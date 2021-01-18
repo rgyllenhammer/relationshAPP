@@ -29,7 +29,9 @@ struct ProfileView: View {
                         NavigationLink(destination: EditProfileView(blocks: $blocks, showing: $editing),
                                        isActive: $editing,
                                        label: {
-                                        Image(systemName: "plus").foregroundColor(.aRed)
+                                        Image(systemName: "plus")
+                                            .foregroundColor(.aRed)
+                                            .font(.title2)
                                        })
                     }
                     

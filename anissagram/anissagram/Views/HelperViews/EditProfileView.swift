@@ -54,10 +54,26 @@ struct EditProfileView: View {
    
                 } else {
                     
+                    HStack {
+                        Text("Details").font(.title2).fontWeight(.semibold)
+                        Spacer()
+                    }.padding(.top)
                     
-                    
-                    
-                    
+                    Image(systemName: "camera")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor(.aRed)
+                        
+                    HStack {
+                        TextField("Caption ...", text: $textInput)
+                            .padding()
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50, alignment: .topLeading)
+//                            .frame(width: UIScreen.main.bounds.width - 30, height: 200, alignment: .top)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(5)
+                        Spacer()
+                    }
+                      
                 }
                 HStack {
                     
@@ -65,7 +81,7 @@ struct EditProfileView: View {
                         if lastType == "text" {
                             self.blocks.append(["id":UUID().uuidString, "type":"text", "value":textInput])
                         } else {
-                            self.blocks.append(["id":UUID().uuidString, "type":"image", "value":"November 27 - full of love"])
+                            self.blocks.append(["id":UUID().uuidString, "type":"image", "value":textInput])
                         }
                         self.showing.toggle()
                         

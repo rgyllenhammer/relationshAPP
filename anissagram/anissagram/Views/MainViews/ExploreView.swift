@@ -42,8 +42,10 @@ struct ExploreView: View {
                     
                             
                             Button(action: {session.signOut()}, label: {
-                                Image(systemName: "gearshape").foregroundColor(.aRed)
-                                    .padding(0)
+                                Image(systemName: "gearshape")
+                                    .foregroundColor(.aRed)
+                                    .font(.title2)
+                                
                             })
                             
                             
