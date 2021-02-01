@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct EditProfileView: View {
-    @Binding var blocks : [[String:String]]
-    @Binding var showing : Bool
+//    @Binding var blocks : [[String:String]]
     
+    // coming from profileview
+    @EnvironmentObject var session : SessionStore
+    @Binding var showing : Bool
+    var lastConversation: String
+    
+    // defaults
     @State var showPopup = false
     @State var lastType = "text"
     var types : [String] = ["text", "image"]
@@ -45,7 +50,6 @@ struct EditProfileView: View {
                         TextField("Post text here ...", text: $textInput)
                             .padding()
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 200, alignment: .topLeading)
-//                            .frame(width: UIScreen.main.bounds.width - 30, height: 200, alignment: .top)
                             .background(Color(.systemGray6))
                             .cornerRadius(5)
                         Spacer()
@@ -68,7 +72,6 @@ struct EditProfileView: View {
                         TextField("Caption ...", text: $textInput)
                             .padding()
                             .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50, alignment: .topLeading)
-//                            .frame(width: UIScreen.main.bounds.width - 30, height: 200, alignment: .top)
                             .background(Color(.systemGray6))
                             .cornerRadius(5)
                         Spacer()
@@ -78,11 +81,8 @@ struct EditProfileView: View {
                 HStack {
                     
                     Button {
-                        if lastType == "text" {
-                            self.blocks.append(["id":UUID().uuidString, "type":"text", "value":textInput])
-                        } else {
-                            self.blocks.append(["id":UUID().uuidString, "type":"image", "value":textInput])
-                        }
+                        self.session.addBlock(with: lastConversation, update: ["id":UUID().uuidString, "type":lastType, "value":textInput])
+                        print(self.session.downloadedRelationships)
                         self.showing.toggle()
                         
                     } label: {
@@ -91,7 +91,6 @@ struct EditProfileView: View {
                     Spacer()
                 }
 
-                
                 Spacer()
             }.padding()
             

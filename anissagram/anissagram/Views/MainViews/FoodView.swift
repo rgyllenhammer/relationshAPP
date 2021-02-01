@@ -106,9 +106,7 @@ struct ChoiceView: View{
         .foregroundColor(.white)
         .cornerRadius(20)
         .onTapGesture {
-            choices.removeAll{(rest) -> Bool in
-                              return rest.name == name
-            }
+            choices.removeAll{(rest) -> Bool in return rest.name == name}
         }
     }
     

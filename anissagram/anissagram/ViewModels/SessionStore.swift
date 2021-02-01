@@ -15,7 +15,7 @@ class SessionStore: ObservableObject {
     
     @Published var didChange = PassthroughSubject<SessionStore, Never>()
     @Published var session: User? { didSet { self.didChange.send(self) }}
-    @Published var fetchedRelationships : NSMutableDictionary = [:]
+    @Published var downloadedRelationships : Dictionary<String, Array<Dictionary<String, String>>> = [:]
     
     func createUserNames() -> [String] {
         if let user = self.session {
@@ -221,6 +221,25 @@ class SessionStore: ObservableObject {
         }
         
         self.updateSession()
+    }
+    
+    func addBlock(with name: String, update: Dictionary<String, String>){
+        if let user = self.session {
+            // CALL TO DBMS PUTTING CHANGES IN RELATIONSHIP DICTIONARY
+            
+            
+            if self.downloadedRelationships[name] != nil {
+                print("appending")
+                self.downloadedRelationships[name]?.append(update)
+            } else {
+                var newArray : Array<Dictionary<String, String>> = []
+                newArray.append(update)
+                self.downloadedRelationships[name] = newArray
+            }
+
+            
+            self.updateSession()
+        }
     }
     
     

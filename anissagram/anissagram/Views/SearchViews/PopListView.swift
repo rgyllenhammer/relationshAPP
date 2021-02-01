@@ -46,5 +46,6 @@ struct PoplistView: View {
         }
         .background(Color.white)
         .frame(width: UIScreen.main.bounds.width - 60, height: UIScreen.main.bounds.height - 250 , alignment: .center)
+        .cornerRadius(10.0)
     }
 }

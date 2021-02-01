@@ -20,6 +20,7 @@ class User : ObservableObject {
     var requests : NSMutableDictionary
     var pending : NSMutableDictionary
     var fullName: String
+//    var downloadedRelationships : Dictionary<String, Array<Dictionary<String, String>>> = [:]
     
     init(uid: String, email: String, displayName: String?,
          userName: String, firstName: String, lastName: String,
