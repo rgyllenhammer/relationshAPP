@@ -70,15 +70,17 @@ final class DatabaseManager {
     }
     
     public func retrieveUserByUsername(userName: String, completion: @escaping ((NSDictionary?, Bool) -> Void)) {
-        database.child("users").child(userName).observeSingleEvent(of: .value, with: { snapshot in
+//        database.child("users").child(userName).observeSingleEvent(of: .value, with: { snapshot in
+        database.child("users").child(userName).observe(DataEventType.value, with: { snapshot in
             let value = snapshot.value as? NSDictionary
             if (value != nil){
                 completion(value, false)
             } else {
                 completion(nil, true)
             }
-            
+
         })
+        
     }
     
     public func addRelationship(userName: String, relationshipUser: String, relationshipUUID: String) {
