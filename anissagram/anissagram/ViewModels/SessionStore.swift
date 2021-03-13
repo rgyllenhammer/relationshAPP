@@ -161,9 +161,7 @@ class SessionStore: ObservableObject {
         let newUUID = UUID().uuidString
         if let user = self.session {
             DatabaseManager.shared.addRelationship(userName: user.userName, relationshipUser: name, relationshipUUID: newUUID)
-            
             user.relationships[name] = newUUID
-            
             self.updateSession()
         }
     }
@@ -180,8 +178,7 @@ class SessionStore: ObservableObject {
     func addPending(with name: String) {
         let newUUID = UUID().uuidString
         if let user = self.session {
-            // CALL TO DBMS FOR ADDING PENDING TO OURS AND REQUEST TO ANOTHER
-//            DatabaseManager.shared.addPending(userName: user.userName, relationshipUser: name, relationshipUUID: newUUID)
+            DatabaseManager.shared.addPending(userName: user.userName, relationshipUser: name, relationshipUUID: newUUID)
             
             user.pending[name] = newUUID
             
@@ -203,19 +200,22 @@ class SessionStore: ObservableObject {
     
     
     func acceptRequest(from name: String) {
-        let newUUID = UUID().uuidString
         if let user = self.session {
             
+            DatabaseManager.shared.removeRequest(userName: user.userName, relationshipUser: name, relationshipUUID: user.requests[name] as! String)
+            
+            // Once request is no longer waiting, it is officially a relationship
+            addRelationShip(with: name)
+            
             user.requests.removeObject(forKey: name)
-            user.relationships[name] = newUUID
         }
-        
-        self.updateSession()
     }
     
     func declineRequest(from name: String) {
         if let user = self.session {
             // CALL TO DBMS FOR REMOVING THIS USER REQUEST AND OTHER USER PENDING MAKE SURE TO DO NOTHING IF NULL VALUE
+            
+            DatabaseManager.shared.removeRequest(userName: user.userName, relationshipUser: name, relationshipUUID: user.requests[name] as! String)
             
             user.requests.removeObject(forKey: name)
         }

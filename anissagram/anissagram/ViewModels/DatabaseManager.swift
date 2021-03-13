@@ -88,7 +88,8 @@ final class DatabaseManager {
             "users/\(relationshipUser)/relationships/\(userName)": relationshipUUID,
             "relationships/\(relationshipUUID)" : [
                 "users": [userName, relationshipUser],
-                "data": "NONE"
+                "data": ["text-post" : ["data": "Hello! Welcome to a relationship with \(relationshipUser)! Here is a place you can post memories with this person, and only you two can see it! To add a memory, click the plus button in the top right and choose either an image or block of text to add. To delete a memory (like this one) hold down and press delete! This is a space for you two now!"]
+                ]
             ]
         ] as [String : Any]
         
@@ -102,6 +103,15 @@ final class DatabaseManager {
         ] as [String : Any]
         
         database.updateChildValues(updates)
+    }
+    
+    public func removeRequest(userName: String, relationshipUser: String, relationshipUUID: String){
+        let updates = [
+            "users/\(relationshipUser)/pending/\(userName)": nil,
+            "users/\(userName)/requests/\(relationshipUser)": nil
+        ] as [String : Any?]
+        
+        database.updateChildValues(updates as [AnyHashable : Any])
     }
     
     public func downloadUsers(completion: @escaping (([String]) -> Void)){
