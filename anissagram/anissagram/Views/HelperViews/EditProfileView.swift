@@ -46,6 +46,7 @@ struct EditProfileView: View {
                         Text("Details").font(.title2).fontWeight(.semibold)
                         Spacer()
                     }.padding(.top)
+                    
                     HStack {
                         TextField("Post text here ...", text: $textInput)
                             .padding()
@@ -53,7 +54,7 @@ struct EditProfileView: View {
                             .background(Color(.systemGray6))
                             .cornerRadius(5)
                         Spacer()
-                    }
+                    }.padding(.top)
                         
    
                 } else {
@@ -63,19 +64,36 @@ struct EditProfileView: View {
                         Spacer()
                     }.padding(.top)
                     
-                    Image(systemName: "camera")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .foregroundColor(.aRed)
-                        
+                    HStack{
+                        Spacer()
+                        VStack{
+                            Spacer()
+                            Image(systemName: "camera")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 100, height: 100, alignment: .center)
+                            
+                            Text("Tap to add an image")
+                            Spacer()
+                        }
+                        Spacer()
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 300, alignment: .topLeading)
+                    .background(Color(.systemGray6))
+                    .foregroundColor(Color(.systemGray3))
+                    .cornerRadius(5)
+                    .padding(.top)
+
+                    
+                    
                     HStack {
                         TextField("Caption ...", text: $textInput)
                             .padding()
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50, alignment: .topLeading)
                             .background(Color(.systemGray6))
                             .cornerRadius(5)
-                        Spacer()
                     }
+                    .padding(.top)
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 50, alignment: .topLeading)
                       
                 }
                 HStack {
@@ -89,7 +107,7 @@ struct EditProfileView: View {
                         Text("Add post").font(.title3)
                     }
                     Spacer()
-                }
+                }.padding(.top)
 
                 Spacer()
             }.padding()

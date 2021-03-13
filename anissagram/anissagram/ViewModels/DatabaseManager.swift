@@ -78,7 +78,6 @@ final class DatabaseManager {
             } else {
                 completion(nil, true)
             }
-
         })
         
     }
@@ -115,10 +114,5 @@ final class DatabaseManager {
             completion(users)
         }
     }
-    
-//    public func test() {
-//        let testDict : NSMutableDictionary = ["reese":"test"]
-//        database.child("test").setValue(testDict)
-//    }
     
 }
