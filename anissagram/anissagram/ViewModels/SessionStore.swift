@@ -33,6 +33,7 @@ class SessionStore: ObservableObject {
             if err != nil {
                 print("Error signing up. Email already in use")
             } else {
+                
                 self.session = User(
                     uid: authResult!.user.uid,
                     email: authResult!.user.email!,

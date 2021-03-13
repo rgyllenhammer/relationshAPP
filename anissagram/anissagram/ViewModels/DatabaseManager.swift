@@ -42,7 +42,7 @@ final class DatabaseManager {
         // setting inital data for user and first relationships
         let updates = [
             "users/\(user.userName)/" : userBody,
-            "relationships/\(user.relationships[user.userName])" : relationshipBody
+            "relationships/\(user.relationships[user.userName]!)" : relationshipBody
 //            "relationships/\(user.relationships![user.userName!]!)" : relationshipBody
         ] as [String : Any]
         
