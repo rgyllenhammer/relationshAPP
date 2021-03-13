@@ -96,6 +96,16 @@ final class DatabaseManager {
         database.updateChildValues(updates)
     }
     
+    public func deleteRelationship(userName: String, relationshipUser: String, relationshipUUID: String) {
+        let updates = [
+            "users/\(userName)/relationships/\(relationshipUser)": nil,
+            "users/\(relationshipUser)/relationships/\(userName)": nil,
+            "relationships/\(relationshipUUID)" : nil
+        ] as [String : Any?]
+         
+        database.updateChildValues(updates as [AnyHashable : Any])
+    }
+    
     public func addPending(userName: String, relationshipUser: String, relationshipUUID: String) {
         let updates = [
             "users/\(userName)/pending/\(relationshipUser)": relationshipUUID,
@@ -105,7 +115,17 @@ final class DatabaseManager {
         database.updateChildValues(updates)
     }
     
-    public func removeRequest(userName: String, relationshipUser: String, relationshipUUID: String){
+    // should just be the opposide of removeRequest, potentially edit this to make it one function
+    public func removePending(userName: String, relationshipUser: String){
+        let updates = [
+            "users/\(userName)/pending/\(relationshipUser)": nil,
+            "users/\(relationshipUser)/requests/\(userName)": nil
+        ] as [String : Any?]
+        
+        database.updateChildValues(updates as [AnyHashable : Any])
+    }
+    
+    public func removeRequest(userName: String, relationshipUser: String){
         let updates = [
             "users/\(relationshipUser)/pending/\(userName)": nil,
             "users/\(userName)/requests/\(relationshipUser)": nil

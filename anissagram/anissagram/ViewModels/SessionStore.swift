@@ -158,21 +158,17 @@ class SessionStore: ObservableObject {
         return self.session?.requests[name] != nil
     }
     
-    func addRelationShip(with name: String) {
-        let newUUID = UUID().uuidString
+    func addRelationShip(with name: String, newUUID : String = UUID().uuidString) {
         if let user = self.session {
             DatabaseManager.shared.addRelationship(userName: user.userName, relationshipUser: name, relationshipUUID: newUUID)
             user.relationships[name] = newUUID
-            self.updateSession()
         }
     }
     
     func deleteRelationShip(with name: String) {
         if let user = self.session {
-            
+            DatabaseManager.shared.deleteRelationship(userName: user.userName, relationshipUser: name, relationshipUUID: user.relationships[name] as! String)
             user.relationships.removeObject(forKey: name)
-            
-            self.updateSession()
         }
     }
     
@@ -180,48 +176,33 @@ class SessionStore: ObservableObject {
         let newUUID = UUID().uuidString
         if let user = self.session {
             DatabaseManager.shared.addPending(userName: user.userName, relationshipUser: name, relationshipUUID: newUUID)
-            
             user.pending[name] = newUUID
-            
-            self.updateSession()
-            
         }
     }
     
     func deletePending(with name: String) {
         if let user = self.session {
-            // CALL TO DBMS FOR DELETING OUR PENDING AND THEIR REQUEST
-            
+            DatabaseManager.shared.removePending(userName: user.userName, relationshipUser: name)
             user.pending.removeObject(forKey: name)
-            
-            self.updateSession()
-            
         }
     }
     
     
     func acceptRequest(from name: String) {
         if let user = self.session {
-            
-            DatabaseManager.shared.removeRequest(userName: user.userName, relationshipUser: name, relationshipUUID: user.requests[name] as! String)
+            DatabaseManager.shared.removeRequest(userName: user.userName, relationshipUser: name)
             
             // Once request is no longer waiting, it is officially a relationship
-            addRelationShip(with: name)
-            
+            addRelationShip(with: name, newUUID: user.requests[name] as! String)
             user.requests.removeObject(forKey: name)
         }
     }
     
     func declineRequest(from name: String) {
         if let user = self.session {
-            // CALL TO DBMS FOR REMOVING THIS USER REQUEST AND OTHER USER PENDING MAKE SURE TO DO NOTHING IF NULL VALUE
-            
-            DatabaseManager.shared.removeRequest(userName: user.userName, relationshipUser: name, relationshipUUID: user.requests[name] as! String)
-            
+            DatabaseManager.shared.removeRequest(userName: user.userName, relationshipUser: name)
             user.requests.removeObject(forKey: name)
         }
-        
-        self.updateSession()
     }
     
     func addBlock(with name: String, update: Dictionary<String, String>){
