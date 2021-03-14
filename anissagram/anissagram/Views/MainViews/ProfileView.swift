@@ -16,6 +16,10 @@ struct ProfileView: View {
     
     @State var editing = false
     
+    func fetchDataFromLastConvo() {
+        session.downloadedRelationships[lastConversation] = [["type":"text", "value":"Hello! Welcome to a relationship between \(session.session!.userName) and \(lastConversation)! Here is a place you can post memories with this person, and only you two can see it! To add a memory, click the plus button in the top right and choose either an image or block of text to add. To delete a memory (like this one) hold down and press delete! This is a space for you two now!"]]
+    }
+    
     var body: some View {
         
         ZStack {
@@ -44,7 +48,10 @@ struct ProfileView: View {
                             }
                         }
                     } else {
-                        NothingToDisplayView().padding(.top, 50)
+                        
+                        NothingToDisplayView().padding(.top, 50).onAppear(perform: {
+                            fetchDataFromLastConvo()
+                        })
                     }
                     
                     
@@ -63,6 +70,7 @@ struct ProfileView: View {
                 if self.lastConversation == String.loading {
                     self.lastConversation = user.userName
                 }
+                                
             }
         })
         
