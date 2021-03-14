@@ -88,8 +88,8 @@ final class DatabaseManager {
             "users/\(relationshipUser)/relationships/\(userName)": relationshipUUID,
             "relationships/\(relationshipUUID)" : [
                 "users": [userName, relationshipUser],
-                "data": ["text-post" : ["data": "Hello! Welcome to a relationship with \(relationshipUser)! Here is a place you can post memories with this person, and only you two can see it! To add a memory, click the plus button in the top right and choose either an image or block of text to add. To delete a memory (like this one) hold down and press delete! This is a space for you two now!"]
-                ]
+                "data": [["text-post" : ["data": "Hello! Welcome to a relationship between \(userName) and \(relationshipUser)! Here is a place you can post memories with this person, and only you two can see it! To add a memory, click the plus button in the top right and choose either an image or block of text to add. To delete a memory (like this one) hold down and press delete! This is a space for you two now!"]
+                ]]
             ]
         ] as [String : Any]
         
