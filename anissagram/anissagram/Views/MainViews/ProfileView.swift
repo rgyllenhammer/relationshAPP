@@ -18,7 +18,7 @@ struct ProfileView: View {
     
     func fetchDataFromLastConvo() {
         
-        session.downloadedRelationships[lastConversation] = [["type":"text", "value":"Hello! Welcome to a relationship between \(session.session!.userName) and \(lastConversation)! Here is a place you can post memories with this person, and only you two can see it! To add a memory, click the plus button in the top right and choose either an image or block of text to add. To delete a memory (like this one) hold down and press delete! This is a space for you all now!"]]
+        session.downloadedRelationships[lastConversation] = [["type":"text", "value":"Hello! Welcome to a relationship between \(session.session!.userName) and \(lastConversation)! Here is a place you can post memories with this person, and only you two can see it! To add a memory, click the plus button in the top right and choose either an image or block of text to add. To delete a memory (like this one) hold down and press delete! This is a space for you all now!!"]]
     }
     
     var body: some View {
